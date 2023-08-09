@@ -7,9 +7,7 @@ import 'swiper/css/effect-fade';
 const MySwiper = () => {
   return (
     <Swiper
-      style={{
-        "--swiper-pagination-color": "#fff",
-      }}
+  
       className='h-fit text-[50px] text-white py-10 hover:text-blue-900'
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
       spaceBetween={50}
