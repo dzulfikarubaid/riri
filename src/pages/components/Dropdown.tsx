@@ -75,9 +75,9 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
     {
       name: 'About',
       options: [
-        { label: 'AELI', path: '/about' },
-        { label: 'Experiental Learning', path: '/' },
-        { label: 'Dewan Pengurus Pusat', path: '/' },
+        { label: 'AELI', path: '/aeli' },
+        { label: 'Experiental Learning', path: '/el' },
+        { label: 'Dewan Pengurus Pusat', path: '/dpp' },
 
       ],
     },
@@ -86,18 +86,18 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       options: [
         // Data dropdown untuk LAYANAN
         { label: '#', path: '/about' },
-        { label: '#', path: '/' },
-        { label: '#', path: '/' },
-        { label: '#', path: '/' },
+        { label: '#', path: '/a' },
+        { label: '#', path: '/a' },
+        { label: '#', path: '/a' },
       ],
     },
     {
         name: 'Community',
         options: [
-          { label: 'Forum', path: '/about' },
-          { label: 'Diskusi', path: '/' },
-          { label: '#', path: '/' },
-          { label: '#', path: '/' },
+          { label: 'Forum', path: '/forum' },
+          { label: 'Diskusi', path: '/diskusi' },
+          { label: '#', path: '/a' },
+          { label: '#', path: '/a' },
         ],
       },
   ];
@@ -132,13 +132,13 @@ function Navbar(){
         <div className={`shadow-sm fixed z-[9999] flex justify-between flex-row w-full text-black  px-10 py-4 items-center
         ${fix ? 'bg-white' : 'bg-blue-400'}
         ${white ? 'bg-white' : ''}`} >
-            <a href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
+            <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
                 {!white ? <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli-putih.png" alt="" /> : <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli.png" alt="" />}
                 <div>
                   <h1 className={`text-[calc(1/4*50px)] ${!white ? 'text-white' : 'text-black'}`}>Asosiasi<br/>Experiental Learning<br/> Indonesia</h1>
 
                 </div>
-            </a>
+            </Link>
             <div className={`flex flex-row gap-4 items-center ${!fix ? 'text-white' : 'text-black'}`}>
             {dropdowns.map((dropdown, index) => (
             <Dropdown key={index} name={dropdown.name} options={dropdown.options} white={white} fix={fix}/>
