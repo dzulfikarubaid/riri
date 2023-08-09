@@ -12,7 +12,7 @@ function Mapss() {
     <div>
         <MapContainer id='map-container' center={[-2.8182097651959817, 118.00233509522967]} zoom={5} scrollWheelZoom={false} dragging={false}  className='w-full h-[500px] bg-transparent overflow-hidden' zoomControl={false} attributionControl={false} boxZoom={false} doubleClickZoom={false} >
         <GeoJSON data={statesData} style={(feature:any) => ({
-    fillColor: specialStates.includes(feature.properties.state) ? 'blue' : 'gray',
+    fillColor: specialStates.includes(feature.properties.state) ? '#2563eb' : 'gray',
     fillOpacity: 0.7,
     weight: 2,
     opacity: 1,
@@ -43,7 +43,7 @@ function Mapss() {
                         weight: 2,
                         dashArray: "",
                         color: 'white',
-                        fillColor: specialStates.includes(feature.properties.state) ? 'blue' : 'gray' 
+                        fillColor: specialStates.includes(feature.properties.state) ? '#2563eb' : 'gray' 
                       })
                 })
                 
