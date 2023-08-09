@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import  statesData  from "../data";
+import  {statesData}  from "@/components/Map/data";
 
 const DetailDPD = () => {
   const { query } = useRouter();
