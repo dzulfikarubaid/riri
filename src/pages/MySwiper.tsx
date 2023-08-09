@@ -24,12 +24,12 @@ const MySwiper = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
-        <div>
-          <h1>Experience is not necessarily Experiential.</h1>
+        <div className='hover:underline'>
+          <h1 >Experience is not necessarily Experiential.</h1>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className=""><h1 className=''>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores voluptates aliquid dolore laboriosam amet mollitia ea quis ad corrupti perspiciatis odio quasi doloremque ipsa, inventore quam necessitatibus facere. Quis, esse?</h1></div>
+        <div className=""><h1 className='hover:underline'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores voluptates aliquid dolore laboriosam amet mollitia ea quis ad corrupti perspiciatis odio quasi doloremque ipsa, inventore quam necessitatibus facere. Quis, esse?</h1></div>
       </SwiperSlide>
       <div className="swiper-pagination"></div>
     </Swiper>
