@@ -8,7 +8,7 @@ const MySwiper = () => {
   return (
     <Swiper
   
-      className='h-fit text-[50px] text-white py-10 hover:text-blue-900'
+      className='h-fit text-[50px] text-white py-10 '
       modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
       spaceBetween={50}
       slidesPerView={1}
@@ -29,7 +29,7 @@ const MySwiper = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="pb-20"><h1 className=''>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores voluptates aliquid dolore laboriosam amet mollitia ea quis ad corrupti perspiciatis odio quasi doloremque ipsa, inventore quam necessitatibus facere. Quis, esse?</h1></div>
+        <div className=""><h1 className=''>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores voluptates aliquid dolore laboriosam amet mollitia ea quis ad corrupti perspiciatis odio quasi doloremque ipsa, inventore quam necessitatibus facere. Quis, esse?</h1></div>
       </SwiperSlide>
       <div className="swiper-pagination"></div>
     </Swiper>
