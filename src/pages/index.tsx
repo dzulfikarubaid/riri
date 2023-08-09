@@ -40,7 +40,7 @@ export default function Home() {
     <Map></Map>
     <div className='flex flex-row justify-center gap-10 text-black mb-10'>
       <div className='flex flex-row gap-4 items-center'>
-        <div className='w-[30px] h-[30px] bg-blue-600'></div>
+        <div className='w-[30px] h-[30px] bg-blue-500'></div>
       <h1>Provinsi yang telah terdaftar pada AELI</h1>
       </div>
       <div className='flex flex-row gap-4 items-center '>
