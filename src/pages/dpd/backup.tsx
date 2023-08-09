@@ -14,9 +14,9 @@ const DetailDPD = () => {
   const { query } = useRouter();
   const [data, setData] = useState<DataItem[]>([]);
   const [filteredData, setFilteredData] = useState<DataItem[]>([]);
-  const filteredFeatures = statesData.features.filter(
-    feature => feature.properties?.slug === query.id
-  );
+  useEffect(() => {
+    
+  })
   useEffect(() => {
     fetch('/api/data_dpd/')
       .then(res => res.json())
@@ -34,22 +34,8 @@ const DetailDPD = () => {
       })
   }, [query.id]);
 
-  if (filteredFeatures.length === 0) {
-    // Handle the case where no matching feature is found
-    return <div>No matching feature found for {query.id}</div>;
-  }
-
-  const firstFeature = filteredFeatures[0];
-
-  if (!firstFeature.properties || !firstFeature.properties.state) {
-    // Handle the case where properties or state doesn't exist
-    return <div>Invalid feature data</div>;
-  }
-
-  const stateName = firstFeature.properties.state;
   return (
-    <div>
-      <Content>
+    <Content>
       {
         filteredData.length > 0 ? filteredData.map((item: DataItem) => (
           <div key={item.nama}>
@@ -60,10 +46,9 @@ const DetailDPD = () => {
           </div>
         )) 
         :
-        <div>DPD AELI pada provinsi {stateName} belum tersedia</div>
+        <div>DPD AELI pada provinsi tersebut belum tersedia</div>
       }
     </Content>
-    </div>
   );
 };
 
