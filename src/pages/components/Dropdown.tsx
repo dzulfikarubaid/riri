@@ -43,16 +43,16 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
         <button
           onMouseEnter={handleMouseEnter}
           onMouseLeave={toggleDropdown}
-          className={`px-4 py-4 focus:outline-none flex flex-row items-center ${white ? 'text-black' : 'text-white'}`}
+          className={`px-4 py-8 focus:outline-none flex flex-row items-center ${white ? 'text-black' : 'text-white'}`}
         >
           {name}
           <BiChevronDown size={20} className={`${isOpen && 'rotate-180'}`} />
         </button>
         {isOpen && (
-          <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 pb-8 shadow-xl` }
+          <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 py-4 shadow-xl top-full` }
           onMouseEnter={toggleDropdown}
             onMouseLeave={toggleDropdown}>
-              <div className={`${!white ? '' : 'bg-white'} ${!fix ? 'bg-blue-400':'bg-blue-500'} h-4`}></div>
+            
             <div
             className="relative"
             
@@ -129,7 +129,7 @@ function Navbar(){
   },[])
     return(
       <div className=''>
-        <div className={`shadow-sm fixed z-[9999] flex justify-between flex-row w-full text-black  px-10 py-4 items-center
+        <div className={`shadow-sm fixed z-[9999] flex justify-between flex-row w-full text-black  px-10  items-center
         ${fix ? 'bg-white' : 'bg-blue-400'}
         ${white ? 'bg-white' : ''}`} >
             <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
