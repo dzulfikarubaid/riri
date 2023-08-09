@@ -1,0 +1,24 @@
+.svg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .styled-svg {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    transition: all 0.3s;
+  }
+  
+  .styled-svg path {
+    fill: transparent;
+    stroke: black;
+    transition: all 0.3s;
+  }
+  
+  .styled-svg:hover path {
+    fill: lightblue;
+    stroke: blue;
+  }
+  
