@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div>
         <Navbar />
       </div>
-      <div style={{ flex: 1, paddingBottom: '20px'}}>
+      <div style={{ flex: 1, paddingBottom: '20px' }}>
         <Component {...pageProps} />
       </div>
       <Footer />

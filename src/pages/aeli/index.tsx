@@ -11,8 +11,9 @@ function index() {
     }
   return (
     <Navbar>
-      <div className='w-full'>
-      <Title id='aeli'>Asosiasi Experiental Learning Indonesia</Title>
+      <div className='w-full px-10'>
+    
+      <Title id='aeli'>Asosiasi Experiential Learning Indonesia</Title>
         <p className='pt-4'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis quas nam impedit quam rerum, perferendis eligendi aliquid id quod consequatur cumque aspernatur, ut repellendus! Magni tenetur illum officiis consequuntur eius.</p>
         
         <Title id='visi-misi'>Visi Misi</Title>

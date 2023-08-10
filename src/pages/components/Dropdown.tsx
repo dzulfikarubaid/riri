@@ -76,7 +76,7 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       name: 'About',
       options: [
         { label: 'AELI', path: '/aeli' },
-        { label: 'Experiental Learning', path: '/el' },
+        { label: 'Experiential Learning', path: '/el' },
         { label: 'Dewan Pengurus Pusat', path: '/dpp' },
 
       ],
@@ -129,14 +129,14 @@ function Navbar(){
   },[])
     return(
       <div className=''>
-        <div className='w-full text-black  px-10  items-center bg-blue-500'><h1 className='py-10 opacity-0'>navbar</h1></div>
-        <div className={`shadow-sm fixed z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
+        <div className='w-full text-black  px-10  items-center bg-white'><h1 className='py-8 opacity-0'>navbar</h1></div>
+        <div className={`fixed z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
         ${fix ? 'bg-white' : 'bg-blue-400'}
-        ${white ? 'bg-white' : ''}`} >
+        ${white ? 'bg-white shadow-lg' : 'shadow-sm '}`} >
             <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
                 {!white ? <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli-putih.png" alt="" /> : <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli.png" alt="" />}
                 <div>
-                  <h1 className={`text-[calc(1/4*50px)] ${!white ? 'text-white' : 'text-black'}`}>Asosiasi<br/>Experiental Learning<br/> Indonesia</h1>
+                  <h1 className={`text-[calc(1/4*50px)] ${!white ? 'text-white' : 'text-black'}`}>Asosiasi<br/>Experiential Learning<br/> Indonesia</h1>
 
                 </div>
             </Link>
