@@ -129,7 +129,8 @@ function Navbar(){
   },[])
     return(
       <div className=''>
-        <div className={`shadow-sm fixed z-[9999] flex justify-between flex-row w-full text-black  px-10  items-center
+        <div className='w-full text-black  px-10  items-center bg-blue-500'><h1 className='py-10 opacity-0'>navbar</h1></div>
+        <div className={`shadow-sm fixed z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
         ${fix ? 'bg-white' : 'bg-blue-400'}
         ${white ? 'bg-white' : ''}`} >
             <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
