@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div style={{ flex: 1, paddingBottom: '20px' }}>
         <Component {...pageProps} />
       </div>
-      <Footer />
+      <Footer className='mt-10'/>
     </div>
   );
 }
