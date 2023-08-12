@@ -78,6 +78,7 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
         { label: 'AELI', path: '/aeli' },
         { label: 'Experiential Learning', path: '/el' },
         { label: 'Dewan Pengurus Pusat', path: '/dpp' },
+        { label: 'Dewan Perwakilan Daerah', path:'/dpd'}
 
       ],
     },

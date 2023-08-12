@@ -24,7 +24,7 @@ export default function Table() {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="font-normal leading-none opacity-70"
+                  className="font-bold leading-none opacity-70"
                 >
                   {head}
                 </Typography>
@@ -41,7 +41,7 @@ export default function Table() {
               <tr key={url}>
                 <td className={classes}>
                   <Typography variant="small" color="blue-gray" className="font-normal">
-                    <Link href={url} >{nama}</Link>
+                    <Link href={url} className="text-blue-500">{nama}</Link>
                   </Typography>
                 </td>
                 <td className={classes}>
