@@ -29,8 +29,6 @@ const DetailDPD = () => {
           'indonesia-'+item.nama.toLowerCase().replace(/\s+/g, "") === query.id
         )
         setFilteredData(filtered);
-        console.log(filteredData);
-        console.log(query.id)
       })
   }, [query.id]);
 
