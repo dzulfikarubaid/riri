@@ -32,7 +32,7 @@ function Index() {
   return (
     
     <div id='top'>
-      <Headroom upTolerance={50}>
+      <Headroom downTolerance={1}>
       <MiniNavbar id='navbar'>
       </MiniNavbar>
       </Headroom>

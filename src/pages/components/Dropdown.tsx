@@ -10,7 +10,7 @@ interface DropdownItemProps {
   }
 function DropdownItem({ path, label, white}: DropdownItemProps) {
 return (
-    <li className={`px-4 py-2 ${!white ? 'bg-white text-blue-500' : 'bg-blue-400 text-white'}`}>
+    <li className={`px-4 py-2 ${!white ? ' text-blue-500' : ' text-white'}`}>
     <a href={path} className={`hover:border-b-4 ${!white ? ' hover:border-blue-500' : ' hover:border-white'}`}>{label}</a>
     </li>
 );
@@ -29,14 +29,16 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       
       setIsOpen((prevIsOpen) => !prevIsOpen);
     };
-    const handleMouseEnter = (e:any) => {
+    const handleMouseEnter = (e: any) => {
       const rect = e.target.getBoundingClientRect();
+      const dropdownHeight = 100; // Ubah sesuai kebutuhan tinggi dropdown
       setPosition({
         left: rect.left,
-        top: rect.top,
+        top: rect.bottom - dropdownHeight, // Ganti ke rect.bottom dan tambahkan window.scrollY
       });
       toggleDropdown();
-    }
+    };
+    
   
     return (
       <div className="">
@@ -51,13 +53,8 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
         {isOpen && (
           <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 py-4 shadow-xl top-full` }
           onMouseEnter={toggleDropdown}
-            onMouseLeave={toggleDropdown}>
-            
-            <div
-            className="relative"
-            
-            style={{ left: position.left, top: position.top }}
-          >
+          onMouseLeave={toggleDropdown}>
+            <div className="relative" style={{ left: position.left, top: position.top }}>
             <ul className="">
               {options.map((option, index) => (
                 <DropdownItem key={index} path={option.path} label={option.label} white={white} />
