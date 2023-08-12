@@ -88,7 +88,7 @@ function dpp() {
 
         const namaUrl = nama.toLowerCase().replace(/\s+/g, '-');
       return(
-        <Link href={`/dpp/${namaUrl}`}>
+        <Link href={`/dpp/${namaUrl}`} key={key}>
         <div key={key} className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
           <Image width={200} height={200} src={foto} alt="" />
           <div className=''>

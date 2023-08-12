@@ -2,12 +2,14 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Content from "../Content";
 import { statesData } from "@/components/Map/data";
+import Iframe from "react-iframe";
 
 interface DataItem {
   nama: string,
     alamat: string,
     telp: string,
     email: string,
+    gmaps:string,
 }
 
 const DetailDPD = () => {
@@ -55,6 +57,8 @@ const DetailDPD = () => {
             <p>{item.alamat}</p>
             <p>{item.telp}</p>
             <p>{item.email}</p>
+            <iframe src={item.gmaps} ></iframe>
+        
           </div>
         )) 
         :
