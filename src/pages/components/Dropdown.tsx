@@ -146,7 +146,7 @@ function Navbar(props:any){
             <Dropdown key={index} name={dropdown.name} options={dropdown.options} white={white} fix={fix}/>
             ))}
             <li>
-              <Link href="">Blog</Link>
+              <Link href="blog">Blog</Link>
             </li>
             </div>
             

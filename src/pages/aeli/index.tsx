@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-
 import Content from '../Content'
 import NoNavbar from '../NoNavbar'
 import MiniNavbar from './navbar'
 import Headroom from 'react-headroom'
 import Link from 'next/link'
+import Image from 'next/image'
 
-function index() {
+function Index() {
     function Title(props:any) {
         const{id,children} = props
         return(
@@ -32,7 +32,7 @@ function index() {
   return (
     
     <div id='top'>
-      <Headroom >
+      <Headroom upTolerance={50}>
       <MiniNavbar id='navbar'>
       </MiniNavbar>
       </Headroom>
@@ -51,12 +51,12 @@ function index() {
         <p className='pt-4'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius alias ut molestiae minima quaerat, dolorum perferendis consectetur quod ab illo laboriosam assumenda blanditiis dignissimos cupiditate distinctio saepe non quis ullam.</p>
         {
           fix &&
-          <Link href="#top" className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 animate-pulse'>
-          <img src="backtop.png" alt="" />
+          <Link href="#top" scroll={false} className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 animate-pulse'>
+          <Image width={40} height={40} src="backtop.png" alt="" />
         </Link>
         }
       </NoNavbar></div>
   )
 }
 
-export default index
+export default Index
