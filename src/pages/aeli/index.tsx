@@ -52,7 +52,7 @@ function Index() {
         {
           fix &&
           <Link href="#top" scroll={false} className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 animate-pulse'>
-          <Image width={40} height={40} src="backtop.png" alt="" />
+          <Image width={40} height={40} src="/backtop.png" alt="" />
         </Link>
         }
       </NoNavbar></div>
