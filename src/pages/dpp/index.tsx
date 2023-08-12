@@ -1,7 +1,8 @@
 import React from 'react'
-import Content from './Content'
+import Content from '../Content'
 import Image from 'next/image'
-import Dpp from '../dpp'
+import Dpp from '../../dpp'
+import Link from 'next/link'
 
 const pengurus = [
     {
@@ -80,15 +81,22 @@ const pengurus = [
 function dpp() {
     function Card(props:any){
         const {nama, jabatan, foto, key} = props
-        
+        const formattedNama = nama
+        .split(' ')
+        .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ')
+
+        const namaUrl = nama.toLowerCase().replace(/\s+/g, '-');
       return(
+        <Link href={`/dpp/${namaUrl}`}>
         <div key={key} className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
           <Image width={200} height={200} src={foto} alt="" />
           <div className=''>
-            <h1 >{nama}</h1>
+            <h1 >{formattedNama}</h1>
             <h1 className='text-black'>{jabatan}</h1>
           </div>
         </div>
+        </Link>
       )
     }
     return (
