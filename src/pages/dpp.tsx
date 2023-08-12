@@ -1,16 +1,92 @@
-
 import React from 'react'
 import Content from './Content'
 import Image from 'next/image'
 import Dpp from '../dpp'
+
+const pengurus = [
+    {
+        nama: "NURFAHMI",
+        jabatan: "Ketua Umum",
+        foto: "/avatar-blue.png"
+
+    },
+    {
+        nama: "JEPIH NURHADI",
+        jabatan: "Bendahara Umum",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "GIGIH GESANG",
+        jabatan: "Sekretaris Jendral",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "NURSANTI ADJI",
+        jabatan: "Kesekretariatan",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "UNANG RUSNADI",
+        jabatan: "Kepala Bidang Keanggotaan",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "DIAN WIBOWO",
+        jabatan: "Kepala Bidang Keorganisasian",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "ADI WALUYO",
+        jabatan: "Kepala Bidang Penelitian dan Pengembangan",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "ARDIAN RANGGA F",
+        jabatan: "Kepala Bidang Pendidikan dan Pelatihan",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama:"D.P. ARSA",
+        jabatan: "Kepala Bidang Sertifikasi dan Akreditasi",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "SOFIYAN HADI",
+        jabatan: "Kepala Bidang Komunikasi Publik",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "DENY NUR ALAM",
+        jabatan: "Kepala Bidang Hubungan Pemerintah",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "HERIYANTO",
+        jabatan: "Kepala Bidang Hubungan Pemerintah",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "DENY NUR ALAM",
+        jabatan: "Kepala Bidang Hubungan Internasional",
+        foto: "/avatar-blue.png"
+    },
+    {
+        nama: "DWIKI PRAYOGA MENZANO",
+        jabatan: "Kepala Bidang Hubungan Pasar dan Mitra",
+        foto: "/avatar-blue.png"
+    },
+    
+]
 function dpp() {
-    function Card(){
+    function Card(props:any){
+        const {nama, jabatan, foto, key} = props
+        
       return(
-        <div className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
-          <Image width={250} height={250} src="/jobs.jpg" alt="" />
+        <div key={key} className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
+          <Image width={200} height={200} src={foto} alt="" />
           <div className=''>
-            <h1 >Steve Jobs</h1>
-            <h1 className='text-black'>Chief Operational Officer</h1>
+            <h1 >{nama}</h1>
+            <h1 className='text-black'>{jabatan}</h1>
           </div>
         </div>
       )
@@ -22,12 +98,9 @@ function dpp() {
         <Dpp></Dpp>
         <h1 className='font-bold text-center text-xl'>Daftar Dewan Pengurus Pusat</h1>
         <div className='flex flex-wrap w-full gap-10 justify-center py-10'>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {pengurus.map((item, index) => (
+          <Card {...item} key={index}></Card>
+        ))}
         </div>
         </div>
       </Content>
