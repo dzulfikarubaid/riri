@@ -102,9 +102,10 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       },
   ];
 
-function Navbar(){
+function Navbar(props:any){
   const [fix, setFix] = useState(false);
   const [white, setWhite] = useState(false);
+  const {className} = props
   function setWhited(){
     if(window.scrollY > 560){
       setWhite(true);
@@ -129,8 +130,8 @@ function Navbar(){
   },[])
     return(
       <div className=''>
-        <div className='w-full text-black  px-10  items-center bg-white'><h1 className='py-8 opacity-0'>navbar</h1></div>
-        <div className={`fixed z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
+        
+        <div className={`fixed ${className} z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
         ${fix ? 'bg-white' : 'bg-blue-400'}
         ${white ? 'bg-white shadow-lg' : 'shadow-sm '}`} >
             <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>

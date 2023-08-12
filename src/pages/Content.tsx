@@ -1,9 +1,14 @@
 import React from 'react'
+import Navbar from './components/Dropdown'
 
 function Content(props:any) {
     const {children, className} = props
   return (
-    <div className={`p-10 ${className}`}>{children}</div>
+    <div>
+      <Navbar></Navbar>
+      <div className={`px-10 mt-24 ${className}`}>{children}</div>
+    </div>
+    
   )
 }
 

@@ -10,9 +10,9 @@ const DynamicComponentWithNoSSR = dynamic(
 )
 function Dpp() {
   return (
-    <Content>
+   
       <DynamicComponentWithNoSSR></DynamicComponentWithNoSSR>
-    </Content>
+    
   )
 }
 

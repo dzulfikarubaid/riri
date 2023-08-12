@@ -14,6 +14,7 @@ import { useState } from 'react';
 import Table  from './Table';
 import Map from '../components/Map';
 import dynamic from 'next/dynamic';
+import Navbar from './components/Dropdown';
 export default function Home() {
   const [dpd, setDPD] = useState(false)
   return (
@@ -21,7 +22,8 @@ export default function Home() {
     <Head>
       <title>Home - AELI</title>
     </Head>
-    <div className='flex flex-col gap-10'>
+    <Navbar></Navbar>
+    <div className='flex flex-col gap-10 pt-20'>
     <div className='w-full h-fit bg-blue-500  px-10 py-20 text-white'>
       <MySwiper></MySwiper>
       

@@ -18,12 +18,12 @@ const pengurus = [
     },
     {
         nama: "GIGIH GESANG",
-        jabatan: "Sekretaris Jendral",
+        jabatan: "Sekretaris Jenderal",
         foto: "/avatar-blue.png"
     },
     {
         nama: "NURSANTI ADJI",
-        jabatan: "Kesekretariatan",
+        jabatan: "Kepala BidangKesekretariatan",
         foto: "/avatar-blue.png"
     },
     {
