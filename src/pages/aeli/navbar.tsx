@@ -29,8 +29,8 @@ function MiniNavbar(props:any) {
   return (
     <div>
       <Navbar className='relative'></Navbar>
-      <div className='flex flex-col gap-10 bg-white justify-center '>
-        <div className='bg-white top-0 w-full shadow-lg self-center'>
+      <div className='flex flex-col gap-10 justify-center '>
+        <div className='bg-white/30 backdrop-blur-lg top-0 w-full shadow-lg self-center'>
         <div id={id} className='w-full px-4 py-4 flex flex-row gap-10 justify-center'>
          
             <Menu target='aeli'>Apa itu AELI?</Menu>

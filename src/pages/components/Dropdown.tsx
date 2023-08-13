@@ -130,8 +130,8 @@ function Navbar(props:any){
       <div className=''>
         
         <div className={`fixed ${className} z-[9999] top-0 flex justify-between flex-row w-full text-black  px-10  items-center
-        ${fix ? 'bg-white' : 'bg-blue-400'}
-        ${white ? 'bg-white shadow-lg' : 'shadow-sm '}`} >
+        ${fix ? '' : 'bg-blue-400'}
+        ${white ? 'bg-white shadow-sm' : 'shadow-sm '}`} >
             <Link href="/" className=' flex flex-row gap-[calc(1/4*50px)] items-center justify-center'>
                 {!white ? <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli-putih.png" alt="" /> : <Image width={50} height={50} className='w-[50px] h-[50px]' src="/logo-aeli.png" alt="" />}
                 <div>
