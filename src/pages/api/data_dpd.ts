@@ -53,14 +53,20 @@ export default function handler(
         {
           nama: "DKI Jakarta",
           alamat: "Sekretariat Pengurus Daerah DKI Jakarta\nJl. Kebon Jeruk No. 1, Jakarta Barat",
-          telp: "Telp. (021) 567-8888. Fax. (021) 567-9999. Mobile. 08123456789",
-          email: "jakarta@aeli.or.id"
+          telp: "Telp (62-21) 7272495",
+          email: "dki@aeli.or.id"
         },
         {
           nama: "Jawa Tengah",
           alamat: "Jalan Demak Bintoro I No. 10 Distrikan Nusukan – Solo",
           telp: "Telp. (62-271) 718883",
           email: "jateng@aeli.or.id"
+        },
+        {
+          nama:"Jawa Barat",
+          alamat:"Rumah Solusi Jalan Bukit Pakar Timur IV Kav. B1, Ciburial, Cimenyan, Kabupaten Bandung",
+          telp:"022 20453260",
+          email:"jabar@aeli.or.id"
         },
         {
           nama: "Kepulauan Riau",
