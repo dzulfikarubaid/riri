@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 function Mapss() {
     const router = useRouter()
     const position = [-2.8182097651959817, 118.00233509522967]
-    const specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'Jakarta Raya', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
+    const specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'DKI Jakarta', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Daerah Istimewa Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
   
   return (
     <div>
