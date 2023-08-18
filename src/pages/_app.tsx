@@ -8,12 +8,12 @@ import Footer from './Footer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div >
       
       <div style={{ flex: 1, paddingBottom: '20px' }}>
         <Component {...pageProps} />
       </div>
-      <Footer className='mt-10'/>
+      
     </div>
   );
 }

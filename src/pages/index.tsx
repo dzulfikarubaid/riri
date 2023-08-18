@@ -15,6 +15,7 @@ import Table  from './Table';
 import Map from '../components/Map';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Dropdown';
+import Footer from './Footer';
 export default function Home() {
   const [dpd, setDPD] = useState(false)
   return (
@@ -56,7 +57,7 @@ export default function Home() {
     }
     </div>
     </div>
-    
+    <Footer></Footer>
    
     
     

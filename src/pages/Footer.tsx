@@ -3,7 +3,7 @@ import React from 'react'
 function Footer(props:any) {
   const{className} = props
   return (
-    <div className={className}>
+    <div className={`${className} mt-10 translate-y-10`}>
     <div className='text-center bg-blue-400 w-full h-10'></div>
     <div className='text-center bg-blue-500 w-full p-10  text-white'>
         <h1>
