@@ -89,7 +89,7 @@ function dpp() {
         const namaUrl = nama.toLowerCase().replace(/\s+/g, '-');
       return(
         <Link href={`/dpp/${namaUrl}`} key={key}>
-        <div key={key} className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
+        <div  className=' p-4 text-blue-500 flex flex-col gap-4 rounded-xl w-[250px] '>
           <Image width={200} height={200} src={foto} alt="" />
           <div className=''>
             <h1 >{formattedNama}</h1>
@@ -102,8 +102,6 @@ function dpp() {
     return (
       <Content>
         <div className=''>
-        <h1 className='font-bold text-center text-xl'>Struktur Organisasi</h1>
-        <Dpp></Dpp>
         <h1 className='font-bold text-center text-xl'>Daftar Dewan Pengurus Pusat</h1>
         <div className='flex flex-wrap w-full gap-10 justify-center py-10'>
         {pengurus.map((item, index) => (

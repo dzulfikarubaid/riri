@@ -148,7 +148,7 @@ function Navbar(props:any){
             </li>
             </div>
             
-            <li><Link href="/signin" className={` py-2 px-3 ${!white ? 'text-black bg-white' : 'text-white bg-blue-500'}`}>Sign In</Link></li>
+            <li><Link href="/signin" className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`}>Sign In</Link></li>
             
         </div>
         
