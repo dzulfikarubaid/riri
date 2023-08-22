@@ -63,12 +63,26 @@ const DetailDPD = () => {
               <Head>
                 <title>DPD {item.nama.toUpperCase()}</title>
               </Head>
-              <p>DPD {item.nama}</p>
+              
               <Map targetState={stateName}></Map>
-              <p>{item.alamat}</p>
-              <p>{item.contact}</p>
-              <p>{item.email}</p>
+              <p className="w-full text-center p-6 py-4 bg-blue-400 text-white">DPD {item.nama}</p>
+              <div className="flex flex-row pt-10 gap-10">
+              
               <iframe src={item.gmaps} ></iframe>
+              <div className="flex flex-row gap-6">
+                <div>
+                  <p>Alamat</p>
+                  <p>Kontak</p>
+                  <p>Email</p>
+                </div>
+                <div>
+                <p>: {item.alamat}</p>
+                <p>: {item.contact}</p>
+                <p>: {item.email}</p>
+                </div>
+              
+              </div>
+              </div>
           
             </div>
           )) 

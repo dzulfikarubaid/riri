@@ -31,9 +31,9 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
     };
     const handleMouseEnter = (e: any) => {
       const rect = e.target.getBoundingClientRect();
-      const dropdownHeight = 100; // Ubah sesuai kebutuhan tinggi dropdown
+      const dropdownHeight = 100;
       setPosition({
-        left: rect.left,
+        left: rect.left - 20,
         top: rect.bottom - dropdownHeight, // Ganti ke rect.bottom dan tambahkan window.scrollY
       });
       toggleDropdown();
@@ -45,13 +45,13 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
         <button
           onMouseEnter={handleMouseEnter}
           onMouseLeave={toggleDropdown}
-          className={`px-4 py-8 focus:outline-none flex flex-row items-center ${white ? 'text-black' : 'text-white'}`}
+          className={`py-8 focus:outline-none flex flex-row items-center ${white ? 'text-black' : 'text-white'}`}
         >
           {name}
           <BiChevronDown size={20} className={`${isOpen && 'rotate-180'}`} />
         </button>
         {isOpen && (
-          <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 py-4 shadow-xl top-full` }
+          <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 py-4 shadow-xl` }
           onMouseEnter={toggleDropdown}
           onMouseLeave={toggleDropdown}>
             <div className="relative" style={{ left: position.left, top: position.top }}>
@@ -80,9 +80,8 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       ],
     },
     {
-      name: 'Services',
+      name: 'Network',
       options: [
-        // Data dropdown untuk LAYANAN
         { label: '#', path: '/about' },
         { label: '#', path: '/a' },
         { label: '#', path: '/a' },
@@ -90,10 +89,8 @@ function Dropdown({ name, options, white, fix}: DropdownProps) {
       ],
     },
     {
-        name: 'Community',
+        name: 'Activities',
         options: [
-          { label: 'Forum', path: '/forum' },
-          { label: 'Diskusi', path: '/diskusi' },
           { label: '#', path: '/a' },
           { label: '#', path: '/a' },
         ],
@@ -139,13 +136,12 @@ function Navbar(props:any){
 
                 </div>
             </Link>
-            <div className={`flex flex-row gap-4 items-center ${!fix ? 'text-white' : 'text-black'}`}>
+            <div className={`flex flex-row gap-8 items-center ${!fix ? 'text-white' : 'text-black'}`}>
             {dropdowns.map((dropdown, index) => (
-            <Dropdown key={index} name={dropdown.name} options={dropdown.options} white={white} fix={fix}/>
+              <Dropdown key={index} name={dropdown.name} options={dropdown.options} white={white} fix={fix}/>
             ))}
-            <li>
-              <Link href="blog">Blog</Link>
-            </li>
+              <Link href="/articles">Articles</Link>
+              <Link href="/news">News</Link>
             </div>
             
             <li><Link href="/signin" className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`}>Sign In</Link></li>
