@@ -3,7 +3,6 @@ import Head from 'next/head'
 import RootLayout from './layout'
 import CountUp from 'react-countup';
 import indonesiaSvg from './indonesia.svg'
-const specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'Jakarta Raya', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSwiper } from 'swiper/react';
@@ -11,7 +10,7 @@ import { useSwiper } from 'swiper/react';
 import 'swiper/css';
 import MySwiper from './MySwiper';
 import { useState } from 'react';
-import Table  from './Table';
+import Table  from './dpd/Table';
 import Map from '../components/Map';
 import dynamic from 'next/dynamic';
 import Navbar from './components/Dropdown';

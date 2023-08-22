@@ -13,7 +13,7 @@ const MySwiper = () => {
       spaceBetween={50}
       slidesPerView={1}
       autoplay={{
-        delay: 2500,
+        delay: 2000,
         pauseOnMouseEnter: true,
       }}
       effect='fade'

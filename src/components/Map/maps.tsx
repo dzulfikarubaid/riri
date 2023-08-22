@@ -3,11 +3,15 @@ import { MapContainer, Marker, Polygon, Popup, TileLayer, GeoJSON } from 'react-
 import { statesData } from './data'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-function Mapss() {
+function Mapss(props:any) {
+  const {targetState} = props
     const router = useRouter()
     const position = [-2.8182097651959817, 118.00233509522967]
-    const specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'DKI Jakarta', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Daerah Istimewa Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
-  
+    let specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'DKI Jakarta', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Daerah Istimewa Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
+    if(specialStates.includes(targetState)){
+      specialStates = targetState
+    }
+
   return (
     <div>
         <MapContainer id='map-container' center={[-2.8182097651959817, 118.00233509522967]} zoom={5} scrollWheelZoom={false} dragging={false}  className='w-full h-[500px] bg-transparent overflow-hidden' zoomControl={false} attributionControl={false} boxZoom={false} doubleClickZoom={false} >

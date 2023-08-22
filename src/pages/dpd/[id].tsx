@@ -1,36 +1,41 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Content from "../Content";
+import axios from "axios";
 import { statesData } from "@/components/Map/data";
-import Iframe from "react-iframe";
+import Head  from "next/head";
+import Map from "@/components/Map";
 
 interface DataItem {
   nama: string,
-    alamat: string,
-    telp: string,
-    email: string,
-    gmaps:string,
+  alamat: string,
+  contact: string,
+  email: string,
+  gmaps:string,
 }
 
 const DetailDPD = () => {
   const { query } = useRouter();
   const [data, setData] = useState<DataItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState<DataItem[]>([]);
   const filteredFeatures = statesData.features.filter(
     feature => feature.properties?.slug === query.id
   );
   useEffect(() => {
-    fetch('/api/data_dpd/')
-      .then(res => res.json())
-      .then(res => {
+    axios.get('https://api-aeli.vercel.app/dpd_list/')
+      .then((res) => {
         setData(res.data);
-        console.log(res.data);
-
+        setLoading(false);
         // Filter data based on query.id
         const filtered = res.data.filter((item: DataItem) =>
           'indonesia-'+item.nama.toLowerCase().replace(/\s+/g, "") === query.id
         )
         setFilteredData(filtered);
+      })
+      .catch(error => {
+        console.error('Terjadi kesalahan:', error);
+        setLoading(false);
       })
   }, [query.id]);
 
@@ -50,20 +55,27 @@ const DetailDPD = () => {
   return (
     <div>
       <Content>
-      {
-        filteredData.length > 0 ? filteredData.map((item: DataItem) => (
-          <div key={item.nama}>
-            <p>{item.nama}</p>
-            <p>{item.alamat}</p>
-            <p>{item.telp}</p>
-            <p>{item.email}</p>
-            <iframe src={item.gmaps} ></iframe>
-        
-          </div>
-        )) 
-        :
-        <div>DPD AELI pada provinsi {stateName} belum tersedia</div>
-      }
+        {
+          loading ? <div>Memuat data...</div>
+          :
+          filteredData.length > 0 ? filteredData.map((item: DataItem) => (
+            <div key={item.nama}>
+              <Head>
+                <title>DPD {item.nama.toUpperCase()}</title>
+              </Head>
+              <p>DPD {item.nama}</p>
+              <Map targetState={stateName}></Map>
+              <p>{item.alamat}</p>
+              <p>{item.contact}</p>
+              <p>{item.email}</p>
+              <iframe src={item.gmaps} ></iframe>
+          
+            </div>
+          )) 
+          :
+          <div>DPD AELI pada provinsi {stateName} belum tersedia</div>
+
+        }
     </Content>
     </div>
   );
