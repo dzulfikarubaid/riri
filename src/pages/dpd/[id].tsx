@@ -5,6 +5,7 @@ import axios from "axios";
 import { statesData } from "@/components/Map/data";
 import Head  from "next/head";
 import Map from "@/components/Map";
+import Calendar from "react-calendar";
 
 interface DataItem {
   nama: string,
@@ -17,6 +18,7 @@ interface DataItem {
 const DetailDPD = () => {
   const { query } = useRouter();
   const [data, setData] = useState<DataItem[]>([]);
+  const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState<DataItem[]>([]);
   const filteredFeatures = statesData.features.filter(
@@ -31,11 +33,13 @@ const DetailDPD = () => {
         const filtered = res.data.filter((item: DataItem) =>
           'indonesia-'+item.nama.toLowerCase().replace(/\s+/g, "") === query.id
         )
+        
         setFilteredData(filtered);
       })
       .catch(error => {
         console.error('Terjadi kesalahan:', error);
         setLoading(false);
+
       })
   }, [query.id]);
 
@@ -56,9 +60,11 @@ const DetailDPD = () => {
     <div>
       <Content>
         {
+          
           loading ? <div>Memuat data...</div>
           :
-          filteredData.length > 0 ? filteredData.map((item: DataItem) => (
+          filteredData.length > 0 ? 
+            filteredData.map((item: DataItem) => (
             <div key={item.nama}>
               <Head>
                 <title>DPD {item.nama.toUpperCase()}</title>
@@ -69,26 +75,28 @@ const DetailDPD = () => {
               <div className="flex flex-row pt-10 gap-10">
               
               <iframe src={item.gmaps} ></iframe>
-              <div className="flex flex-row gap-6">
-                <div>
-                  <p>Alamat</p>
-                  <p>Kontak</p>
-                  <p>Email</p>
-                </div>
-                <div>
-                <p>: {item.alamat}</p>
-                <p>: {item.contact}</p>
-                <p>: {item.email}</p>
-                </div>
+              <div className="flex flex-col gap-2">
+                
+                <p className="w-[100px] font-semibold">Alamat :</p>
+                <p className="">{item.alamat}</p>
+
+                <p className="w-[100px] font-semibold">Kontak :</p>
+                <p className="">{item.contact}</p>
+
+                <p className="w-[100px] font-semibold">Email :</p>
+                <p className="">{item.email}</p>
+
+              
               
               </div>
+              <Calendar></Calendar>
               </div>
           
             </div>
+             
           )) 
           :
           <div>DPD AELI pada provinsi {stateName} belum tersedia</div>
-
         }
     </Content>
     </div>
