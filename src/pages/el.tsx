@@ -4,7 +4,7 @@ import Content from './Content';
 
 const About = () => {
   return (
-    <Content className='flex flex-col justify-center text-center pt-10'>
+    <Content className='flex flex-col justify-center text-center'>
       <h1 className='font-bold text-xl mb-5'>Apa itu experiential learning?</h1>
       <p className='text-justify'>
         <strong>Definisi Experiential Learning</strong><br /><br />
