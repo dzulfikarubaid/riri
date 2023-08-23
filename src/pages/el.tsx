@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Content from './Content'
 const About = () => {
   return (
-    <Content className='flex flex-col justify-center text-center'>
+    <Content className='flex flex-col justify-center text-center pt-10'>
       <h1 className='font-bold text-xl mb-5'>Apa itu experiential learning?</h1>
       <p className='text-justify'>
       <h1 className='font-bold'>Definisi Experiential Learning</h1>

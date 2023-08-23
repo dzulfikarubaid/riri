@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const TABLE_HEAD = ["Nama Cabang", "Alamat", "Nomor Telepon", "Email"];
+const TABLE_HEAD = ["Nama Cabang","Kontak", "Email"];
 
 export default function Table() {
   const [loading, setLoading] = useState(true);
@@ -36,7 +36,7 @@ export default function Table() {
 
   return (
     <div className="w-full">
-      <Card className="relative h-full overflow-scroll p-4">
+      <Card className="relative h-full overflow-scroll p-4 w-full">
       <input
         type="text"
         placeholder="Cari nama cabang..."
@@ -47,7 +47,7 @@ export default function Table() {
       {loading ? (
         <div>Memuat data...</div>
       ) : (
-        <table className="w-[400px] min-w-max table-auto text-left">
+        <table className="w-full table-auto text-left">
           <thead>
           <tr>
             {TABLE_HEAD.map((head) => (
@@ -64,7 +64,7 @@ export default function Table() {
           </tr>
         </thead>
           <tbody>
-            {filteredData.map(({ nama, alamat, telp, email }, index) => {
+            {filteredData.map(({ nama, contact, email }, index) => {
               const isLast = index === data.length - 1;
               const classes = isLast ? "py-4" : "py-4 pr-2 border-b border-blue-gray-50";
               const url = 'dpd/indonesia-'+nama.toLowerCase().replace(/\s+/g, "")
@@ -75,14 +75,10 @@ export default function Table() {
                       <Link href={url} className="text-blue-500">{nama}</Link>
                     </Typography>
                   </td>
+                  
                   <td className={classes}>
                     <Typography variant="small" color="blue-gray" className="font-normal">
-                      {alamat}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography variant="small" color="blue-gray" className="font-normal">
-                      {telp}
+                      {contact}
                     </Typography>
                   </td>
                   <td className={classes}>

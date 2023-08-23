@@ -32,7 +32,6 @@ function Dropdown({ name, options, white, fix }: DropdownProps) {
     const distance = rect.left
     
     setDistanceFromLeft(distance);
-    console.log(distance)
     setIsOpen(true);
   };
   const handleMenuLeave = () =>{
