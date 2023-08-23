@@ -1,4 +1,4 @@
-// components/Dropdown.tsx
+
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BiChevronDown } from "react-icons/bi";
@@ -10,7 +10,7 @@ interface DropdownItemProps {
   }
 function DropdownItem({ path, label, white}: DropdownItemProps) {
 return (
-    <li className={`px-4 py-2 ${!white ? ' text-blue-500' : ' text-white'}`}>
+    <li className={`py-2 ${!white ? ' text-blue-500' : ' text-white'}`}>
     <a href={path} className={`hover:border-b-4 ${!white ? ' hover:border-blue-500' : ' hover:border-white'}`}>{label}</a>
     </li>
 );
@@ -22,52 +22,67 @@ options: DropdownItemProps[];
 white?: boolean;
 fix?: boolean;
 }
-function Dropdown({ name, options, white, fix}: DropdownProps) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [position, setPosition] = useState({ left: 0, top: 0 });
-    const toggleDropdown = () => {
-      
-      setIsOpen((prevIsOpen) => !prevIsOpen);
-    };
-    const handleMouseEnter = (e: any) => {
-      const rect = e.target.getBoundingClientRect();
-      const dropdownHeight = 100;
-      setPosition({
-        left: rect.left - 20,
-        top: rect.bottom - dropdownHeight, // Ganti ke rect.bottom dan tambahkan window.scrollY
-      });
-      toggleDropdown();
-    };
+
+function Dropdown({ name, options, white, fix }: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [distanceFromLeft, setDistanceFromLeft] = useState(0)
+
+  const handleMenuEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const distance = rect.left
     
-  
-    return (
-      <div className="">
-        <button
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={toggleDropdown}
-          className={`py-8 focus:outline-none flex flex-row items-center ${white ? 'text-black' : 'text-white'}`}
+    setDistanceFromLeft(distance);
+    console.log(distance)
+    setIsOpen(true);
+  };
+  const handleMenuLeave = () =>{
+    setIsOpen(false);
+  }
+
+  return (
+    <div className="">
+      <button
+        onMouseEnter={handleMenuEnter}
+        onMouseLeave={handleMenuLeave}
+        className={`py-8 focus:outline-none flex flex-row items-center ${
+          white ? 'text-black' : 'text-white'
+        }`}
+      >
+        {name}
+        <BiChevronDown
+          size={20}
+          className={`${isOpen && 'rotate-180'}`}
+        />
+      </button>
+      {isOpen && (
+        <div
+          className={`w-full absolute flex flex-col ${
+            !white ? 'bg-white' : 'bg-blue-400'
+          } left-0 py-4 shadow-xl`}
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={handleMenuLeave}
         >
-          {name}
-          <BiChevronDown size={20} className={`${isOpen && 'rotate-180'}`} />
-        </button>
-        {isOpen && (
-          <div className={`w-full absolute flex flex-col ${!white? 'bg-white' : 'bg-blue-400'} left-0 py-4 shadow-xl` }
-          onMouseEnter={toggleDropdown}
-          onMouseLeave={toggleDropdown}>
-            <div className="relative" style={{ left: position.left, top: position.top }}>
-            <ul className="">
+          <div className="relative">
+            
+            <ul style={{ marginLeft: `${distanceFromLeft}px`}}>
               {options.map((option, index) => (
-                <DropdownItem key={index} path={option.path} label={option.label} white={white} />
+                <DropdownItem
+                  key={index}
+                  path={option.path}
+                  label={option.label}
+                  white={white}
+                />
               ))}
+              
             </ul>
           </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
-          </div>
-          
-        )}
-      </div>
-    );
-  }
+
   const dropdowns: { name: string, options: DropdownItemProps[] }[] = [
     {
       name: 'About',
