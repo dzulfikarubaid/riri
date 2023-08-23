@@ -50,21 +50,22 @@ function Index() {
         
         <Title id='visi-misi'>Visi Misi</Title>
         <p className='pt-4 px-10'>
-        <h1 className='font-bold'>Visi</h1>
+        <strong className='font-bold'>Visi</strong>
         <br/>
         Menjadi wadah dan mitra yang berkualitas bagi seluruh lembaga atau perorangan pengguna metode pelatihan berbasis pengalaman di Indonesia dan bertanggung jawab terhadap pengembangan kualitas manusia Indonesia
         <br/><br/>
-        <h1 className='font-bold'>Misi</h1>
+        <strong className='font-bold'>Misi</strong>
         <br/>
-        <li className='list-inside list-disc'>Memasyarakatkan pelatihan berbasis pengalaman kepada masyarakat Indonesia
-        </li>
-        <li className='list-inside list-disc'>Meningkatkan kualitas  pelatihan dan pendidikan berbasis pengalaman, sehingga menjadi metode pelatihan yang efektif dan diakui di Indonesia</li>
-        <li className='list-inside list-disc'>Meningkatkan kualitas pelaksana pelatihan berbasis pengalaman sehingga menjadi pelaksana pelatihan yang bertanggung jawab terhadap pengembangan manusia Indonesia</li>
+        ● Memasyarakatkan pelatihan berbasis pengalaman kepada masyarakat Indonesia
+        <br />
+        ● Meningkatkan kualitas  pelatihan dan pendidikan berbasis pengalaman, sehingga menjadi metode pelatihan yang efektif dan diakui di Indonesia
+        <br />
+        ● Meningkatkan kualitas pelaksana pelatihan berbasis pengalaman sehingga menjadi pelaksana pelatihan yang bertanggung jawab terhadap pengembangan manusia Indonesia
         </p>
         <Title id='sejarah'>Sejarah</Title>
         <p className='pt-4 px-10'>
-          <h1 className='font-bold'>Masuknya Outward Bound ke Indonesia
-            </h1>
+          <strong className='font-bold'>Masuknya Outward Bound ke Indonesia
+            </strong>
             <br />
 Sejarah AELI tidak bisa dipisahkan dari masuknya Outward Bound ke Indonesia. Secara resmi Outward Bound Indonesia (OBI) yang merupakan lembaga pendidikan informal didirikan pada tahun 1990, oleh Djoko Kusumowidagdo, dan segera mendapat respon positif dari masyarakat.
 <br /><br />
@@ -77,7 +78,7 @@ Pada awal tahun 2000-an, para pelaku pendidikan mulai sadar untuk menata diri. S
 <br /><br />
 Pembentukan wadah pelaku pendidikan dimulai dengan adanya kesepakatan bahwa meskipun banyak cara yang mereka gunakan, namun metodenya tetap sama, yakni experiential education (EE). Akan tetapi, dikarenakan EE yang digagas oleh John Dewey, sudah menjadi nama lembaga internasional (AEE, Association for Experiential Education), maka para penggagas wadah ini pun mengusulkan penggunaan sebutan  Experiential Learning (EL).
 <br /><br />
-<h1 className='font-bold'>Inisiasi Pembentukan AELI</h1>
+<strong className='font-bold'>Inisiasi Pembentukan AELI</strong>
 <br />
 Pertemuan informal pertama untuk menggagas pembentukan wadah diadakan di Tanah Tingal pada bulan November 2006 dan dilanjutkan dengan pertemuan berikutnya di Pancawati. Pada pertemuan ketiga di Pasir Randu, dibentuklah “Panitia Tujuh” yang terdiri dari:
 <br /><br/>
@@ -97,14 +98,14 @@ Pertemuan informal pertama untuk menggagas pembentukan wadah diadakan di Tanah T
 <br /><br />
 Panitia Tujuh selanjutnya mengadakan persiapan administratif (notaris, dll) dan rencana deklarasi. Tanggal 24 Januari 2007 beberapa lembaga penyelenggara outdoor training sepakat untuk membentuk asosiasi dengan nama “Indonesian Experiential Learning Association” (IELA) atau “Asosiasi Experiential Learning Indonesia” (AELI).
 <br/><br />
-<h1 className='font-bold'>Penggunaan Istilah Experiential Learning</h1>
+<strong className='font-bold'>Penggunaan Istilah Experiential Learning</strong>
 <br />
 Experiential Learning sendiri kemudian disepakati sebagai istilah untuk mewadahi pengertian “Pembelajaran berbasis pengalaman”. Penggunaan nama Experiential Learning disepakati, setelah melalui diskusi panjang yang cukup alot, sebab ada pula gagasan agar menggunakan nama “Outbound”. Namun akhirnya nama Experiential Learning dipilih, karena semua lembaga penyelenggara outdoor training sebenarnya menerapkan metodologi pembelajaran ini. 
 <br /><br />
 Dengan memilih nama Experiential Learning, anggota asosiasi menjadi tidak hanya terbatas pada lembaga penyelenggara outdoor training, melainkan juga para lembaga pendidikan formal (sekolah, perguruan tinggi), para pengajar (guru, dosen), maupun lembaga-lembaga pendidikan non formal di luar outdoor training. Asosiasi ini bahkan juga terbuka bagi siapa saja yang berminat terhadap metode pembelajaran berbasis pengalaman.
 <br /><br />
-<h1 className='font-bold'>AELI Berdiri Secara Resmi
-</h1>
+<strong className='font-bold'>AELI Berdiri Secara Resmi
+</strong>
 <br />
 Setelah secara administratif AELI didaftarkan ke notaris pada 24 April 2007 (Akta Pendirian No. 7 Tgl. 24 April 2007, Notaris HARYANTI SUSANTO TANUBRATA, S.H, M.Kn. Jakarta Selatan), kemudian pada tanggal 9 Juni 2007 dikuatkan dengan deklarasi pembentukannya di Tanah Tingal, Jombang, Ciputat, Tangerang Selatan, Banten. 
 <br /><br />
@@ -116,7 +117,7 @@ Deklarasi ini dilakukan bersamaan dengan penyelenggaraan Festival Outbound Nasio
 <br /><br />
 Untuk mencapai Visi dan menjalankan Misi yang ditetapkan, AELI memiliki program-program pengembangan terkait Experiential Learning antara lain:
 <br /><br />
-<h1 className='font-bold'>Program peningkatan kapasitas anggota perorangan (Praktisi)</h1>
+<strong className='font-bold'>Program peningkatan kapasitas anggota perorangan (Praktisi)</strong><br />
 ●	Certified Training “Basic Facilitator Experiential Learning”
 <br />
 ●	Certified Training “Advance Facilitator Experiential Learning”
@@ -125,7 +126,7 @@ Untuk mencapai Visi dan menjalankan Misi yang ditetapkan, AELI memiliki program-
 <br />
 ●	Sertifikasi Kompetensi Kerja Nasional Indonesia (SKKNI) Facilitator Experiential Learning bekerjasama dengan LSP
 <br /><br />
-<h1 className='font-bold'>Program peningkatan kapasitas anggota lembaga (Provider)</h1>
+<strong className='font-bold'>Program peningkatan kapasitas anggota lembaga (Provider)</strong><br />
 ●	Certified Training “Professional Provider Experiential Learning”
 <br />
 ●	Accredited Member of AELI
@@ -136,7 +137,7 @@ Untuk mencapai Visi dan menjalankan Misi yang ditetapkan, AELI memiliki program-
 
         </p>
         <Title id='sertifikasi'>Sertifikasi</Title>
-        <p className='pt-4 px-10'><h1 className='font-bold'>Sertifikasi Kepemanduan Outbound</h1><br />
+        <p className='pt-4 px-10'><strong className='font-bold'>Sertifikasi Kepemanduan Outbound</strong><br />
         AELI telah menjadi mitra BNSP dan LSP untuk mengadakan Sertifikasi Uji Kompetensi  Kepemanduan Outbound sejak tahun 2014. Daftar pelaksanaan Sertifikasi Uji Kompetensi Kepemanduan Outbound adalah sebagai berikut :
         <br /><br/> 
         1.	Tebet, Senin, 17 November 2014 (para asesor)
@@ -166,7 +167,7 @@ Untuk mencapai Visi dan menjalankan Misi yang ditetapkan, AELI memiliki program-
 </p>
         {
           fix &&
-          <Link href="#top" scroll={false} className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 animate-pulse'>
+          <Link href="#top" scroll={false} className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 '>
           <Image width={40} height={40} src="/backtop.png" alt="" />
         </Link>
         }
