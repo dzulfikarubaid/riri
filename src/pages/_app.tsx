@@ -5,15 +5,15 @@ import { useState, useEffect } from 'react'
 import Headroom from 'react-headroom'
 import "@/styles/leaflet.css";
 import Footer from './Footer'
-
-export default function App({ Component, pageProps }: AppProps) {
+import {SessionProvider} from 'next-auth/react';
+export default function App({ Component, pageProps:{ session, ...pageProps} }: AppProps) {
   return (
-    <div >
+    <SessionProvider session={session}>
       
       <div style={{ flex: 1, paddingBottom: '20px' }}>
         <Component {...pageProps} />
       </div>
       
-    </div>
+    </SessionProvider>
   );
 }

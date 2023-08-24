@@ -2,7 +2,9 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { BiChevronDown } from "react-icons/bi";
+import {signIn, signOut, useSession} from 'next-auth/react'
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 interface DropdownItemProps {
     path: string;
     label: string;
@@ -115,6 +117,7 @@ function Navbar(props:any){
   const [fix, setFix] = useState(false);
   const [white, setWhite] = useState(false);
   const {className} = props
+  const {data}:any = useSession()
   function setWhited(){
     if(window.scrollY > 560){
       setWhite(true);
@@ -137,6 +140,10 @@ function Navbar(props:any){
     window.addEventListener('scroll', setFixed);
     window.addEventListener('scroll', setWhited);
   },[])
+  const {push} = useRouter()
+  function handleSignout(){
+    signOut()
+  }
     return(
       <div className=''>
         
@@ -158,8 +165,18 @@ function Navbar(props:any){
               <Link href="/news">News</Link>
             </div>
             
-            <li><Link href="/signin" className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`}>Sign In</Link></li>
-            
+            {/* <li><Link href="/signin" className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`}>Sign In</Link></li> */}
+            <div>
+            {
+              data ?
+              <div className='flex flex-row gap-4 items-center'>
+                <Link className={`${white ? 'text-black' : 'text-white'}`} href={'/profile'}>{data.user.name}</Link>
+                <button className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`} onClick={handleSignout}>Sign Out</button>
+              </div>
+              :
+              <button className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`} onClick={()=>signIn()}>Sign In</button>
+            }
+            </div>
         </div>
         
       </div>
