@@ -48,7 +48,7 @@ export default function Write() {
 
   return (
     <Editor
-      apiKey="2o9x501nuyep51nch4tkm64sa38blzs2lfha634xa0p7y4x3"
+      apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
       onInit={(evt, editor) => {
         editorRef.current = editor;
         RemoveImagePlugin(editor);
