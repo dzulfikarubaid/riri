@@ -1,8 +1,24 @@
 import { getDocs, collection, getDoc, getFirestore, doc, query, where, addDoc } from "firebase/firestore";
 import app from './init'
 import bcrypt from 'bcrypt'
+import { getDatabase, ref, child, get } from "firebase/database";
+import { useRef, useState, useEffect } from "react";
 
 const firestore = getFirestore(app)
+
+export async function getData(path: any) {
+    const database = getDatabase(app);
+    const rootRef = ref(database, path);
+    
+    try {
+      const snapshot = await get(rootRef);
+      const dbValue = snapshot.val();
+      return dbValue;
+    } catch (error) {
+      console.error('Error getting data:', error);
+      throw error;
+    }
+  }
 export async function retrieveData(collectionName:string){
     const snapshot = await getDocs(collection(firestore, collectionName));
     const data = snapshot.docs.map((doc) => (
