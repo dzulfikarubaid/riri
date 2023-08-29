@@ -6,6 +6,8 @@ import { statesData } from "@/components/Map/data";
 import Head  from "next/head";
 import Map from "@/components/Map";
 import Calendar from "react-calendar";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface DataItem {
   nama: string,
@@ -89,7 +91,18 @@ const DetailDPD = () => {
               
               
               </div>
+              <div className="flex flex-col gap-20">
               <Calendar></Calendar>
+              
+              </div>
+              </div>
+              <div className="mt-10 flex flex-col justify-center items-center">
+              <Link target="_blank" className="flex items-center justify-center flex-row gap-4 w-fit text-center p-6 py-2 rounded-xl bg-black text-white" href={`https://api.whatsapp.com/send?phone=62${item.contact.slice(1)}`}>
+                <h1>HUBUNGI DPD {item.nama.toUpperCase()}</h1>
+                <FaWhatsapp size={30}></FaWhatsapp>
+              </Link>
+              
+                
               </div>
           
             </div>

@@ -3,6 +3,7 @@ import { Card, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const TABLE_HEAD = ["Nama Cabang","Kontak", "Email"];
 
@@ -37,13 +38,13 @@ export default function Table() {
   return (
     <div className="w-full">
       <Card className="relative h-full overflow-scroll p-4 w-full">
-      <input
-        type="text"
+      <div className='flex flex-row gap-3 rounded-full border-gray-500 bg-gray-100 border-[1px] p-2 pl-4 py-1 items-center w-[400px] self-end mb-10'>
+      <FaSearch color='gray'></FaSearch>
+      <input type="text" 
         placeholder="Cari nama cabang..."
         value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-        className="p-2 border rounded-xl mb-4 w-[400px] focus:outline-none self-end"
-      />
+        onChange={(e) => setSearchInput(e.target.value)} className='focus:outline-none bg-transparent' />
+      </div>
       {loading ? (
         <div>Memuat data...</div>
       ) : (

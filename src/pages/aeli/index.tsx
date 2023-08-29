@@ -165,12 +165,12 @@ Untuk mencapai Visi dan menjalankan Misi yang ditetapkan, AELI memiliki program-
 12.	Makassar, Minggu, 20 Agustus 2017
 <br />
 </p>
-        {
+        {/* {
           fix &&
           <Link href="#top" scroll={false} className='bottom-8 w-10 fixed right-8 ease-in-out duration-700 '>
           <Image width={40} height={40} src="/backtop.png" alt="" />
         </Link>
-        }
+        } */}
       </NoNavbar></div>
   )
 }

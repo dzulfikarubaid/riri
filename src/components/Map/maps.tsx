@@ -7,7 +7,7 @@ function Mapss(props:any) {
   const {targetState} = props
     const router = useRouter()
     const position = [-2.8182097651959817, 118.00233509522967]
-    let specialStates = ['Riau', 'Lampung', 'Jawa Timur', 'DKI Jakarta', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Daerah Istimewa Yogyakarta', 'Nusa Tenggara Barat', 'Kepulauan Riau', 'Bengkulu', 'Banten', 'Sumatera Selatan']
+    let specialStates = ['Kalimantan Selatan', 'Lampung', 'Jawa Timur', 'DKI Jakarta', 'Bali', 'Jawa Tengah', 'Jawa Barat', 'Sumatera Barat', 'Daerah Istimewa Yogyakarta', 'Nusa Tenggara Barat', 'Kalimantan Timur', 'Bangka Belitung', 'Sumatera Selatan', 'Sumatera Utara','Sulawesi Selatan']
     if(specialStates.includes(targetState)){
       specialStates = targetState
     }
@@ -15,7 +15,8 @@ function Mapss(props:any) {
   return (
     <div>
         <MapContainer id='map-container' center={[-2.8182097651959817, 118.00233509522967]} zoom={5} scrollWheelZoom={false} dragging={false}  className='w-full h-[500px] bg-transparent overflow-hidden' zoomControl={false} attributionControl={false} boxZoom={false} doubleClickZoom={false} >
-        <GeoJSON data={statesData} style={(feature:any) => ({
+        <GeoJSON data={statesData} style={
+          (feature:any) => ({
     fillColor: specialStates.includes(feature.properties.state) ? '#3b82f6' : 'rgb(156 163 175)',
     fillOpacity: 1,
     weight: 2,

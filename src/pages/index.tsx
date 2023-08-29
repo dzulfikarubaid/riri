@@ -36,9 +36,9 @@ export default function Home() {
       <h1 className='font-semibold text-black text-xl'>Jumlah Anggota AELI</h1>
       <CountUp end={199} duration={20} className='font-semibold text-[50px]'></CountUp>
     </div>
-    <div className='w-full h-fit bg-white px-10 text-blue-500 text-center'>
+    <div className='w-full h-fit bg-white px-10 text-center'>
     
-    <h1 className='font-bold text-[30px]'>Peta Persebaran DPD AELI di Indonesia</h1>
+    <h1 className='font-bold text-[30px] text-blue-500'>Peta Persebaran DPD AELI di Indonesia</h1>
     <Map></Map>
     <div className='flex flex-row justify-center gap-10 text-black mb-10'>
       <div className='flex flex-row gap-4 items-center'>

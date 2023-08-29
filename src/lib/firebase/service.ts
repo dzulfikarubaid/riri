@@ -20,6 +20,8 @@ export async function retrieveDataById(collectionName:string, id:string){
     return data
 }
 
+
+
 export async function signIn(userData:{
     email:string;
 }){
@@ -37,6 +39,50 @@ export async function signIn(userData:{
     else{
         return null
     }
+}
+
+export async function addArticles(userData:{
+    title:string;
+    content:string;
+    name:string;
+}, callback:Function){
+    const q = query(collection(firestore, "articles"))
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => (
+        {
+            id: doc.id,
+            ...doc.data()
+        }
+    ))
+    if(!userData.title){
+        callback({
+            status:false,
+            message:"Masukkan Judul"
+        })
+        return
+    }
+    if(!userData.content){
+        callback({
+            status:false,
+            message:"Masukkan Konten"
+        })
+        return
+    }
+    await addDoc(collection(firestore, "articles"),userData)
+    .then(res => {
+        callback({
+            status:true,
+            message:"Berhasil menambahkan artikel"
+        })
+    })
+    .catch(
+        (error) => {
+            callback({
+                status:false,
+                message:"Gagal menambahkan artikel"
+            })
+        }
+    )
 }
 export async function signUp(userData:{
     email:string;

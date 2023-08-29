@@ -88,22 +88,13 @@ function Dropdown({ name, options, white, fix }: DropdownProps) {
     {
       name: 'About',
       options: [
-        { label: 'AELI', path: '/aeli' },
+        { label: 'Asosiasi Experiential Learning Indonesia', path: '/aeli' },
         { label: 'Experiential Learning', path: '/el' },
         { label: 'Dewan Pengurus Pusat', path: '/dpp' },
-        { label: 'Dewan Perwakilan Daerah', path:'/dpd'}
 
       ],
     },
-    {
-      name: 'Network',
-      options: [
-        { label: '#', path: '/about' },
-        { label: '#', path: '/a' },
-        { label: '#', path: '/a' },
-        { label: '#', path: '/a' },
-      ],
-    },
+    
     {
         name: 'Activities',
         options: [
@@ -161,6 +152,8 @@ function Navbar(props:any){
             {dropdowns.map((dropdown, index) => (
               <Dropdown key={index} name={dropdown.name} options={dropdown.options} white={white} fix={fix}/>
             ))}
+              <Link href={'/dpd'}>DPD</Link>
+              <Link href={'/members'}>Members</Link>
               <Link href="/articles">Articles</Link>
               <Link href="/news">News</Link>
             </div>
