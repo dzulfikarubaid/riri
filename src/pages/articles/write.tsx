@@ -51,7 +51,8 @@ export default function Write() {
       const data:any = {
         name: session?.user?.name,
         title: value,
-        content: content
+        content: content,
+        create_at: new Date()
       }
       console.log(data);
       // an application would save the editor content to the server here

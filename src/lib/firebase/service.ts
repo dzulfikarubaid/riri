@@ -61,6 +61,7 @@ export async function addArticles(userData:{
     title:string;
     content:string;
     name:string;
+    create_at:string;
 }, callback:Function){
     const q = query(collection(firestore, "articles"))
     const snapshot = await getDocs(q);
