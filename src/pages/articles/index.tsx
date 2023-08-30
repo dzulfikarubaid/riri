@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 function Articles() {
   const [value, setValue] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     axios.get('/api/getarticles')
@@ -16,10 +18,16 @@ function Articles() {
         console.log(err);
       });
   }, []);
-
+  useEffect(() => {
+    // Filter data based on searchInput
+    const filteredResults = value.filter(({ title }:any) =>
+      title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredData(filteredResults);
+  }, [searchInput, value]);
   return (
     <div>
-      <Navbar />
+      <Navbar value={searchInput} onChange={(e:any) => setSearchInput(e.target.value)}/>
       <div className='flex flex-row px-24 py-10 gap-10'>
         <div className='flex flex-wrap w-1/2 gap-6'>
           <div className='flex flex-row justify-between'>

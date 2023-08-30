@@ -2,8 +2,9 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import {FaPen, FaPenSquare, FaSearch, FaTimes} from 'react-icons/fa'
 import {FaPenToSquare} from 'react-icons/fa6'
-function Navbar() {
+function Navbar(props:any) {
     const [isOpen, setIsOpen] = useState(false);
+    const{value, onChange} = props
   return (
     <div className='flex flex-row justify-between items-center px-24 py-6'>
         <div className='bg-white text-black  w-full flex flex-row gap-3 items-center'>
@@ -16,7 +17,8 @@ function Navbar() {
             isOpen ?
             <div className='flex flex-row gap-3 rounded-full border-gray-500 bg-gray-100 border-[1px] p-2 pl-4 py-1 items-center'>
             <FaSearch color='gray'></FaSearch>
-            <input type="text" placeholder='Cari judul artikel...' className='focus:outline-none bg-transparent' />
+            <input value={value}
+        onChange={onChange} className='focus:outline-none bg-transparent'  type="text" placeholder='Cari judul artikel...'  />
             <button onClick={() => setIsOpen(!isOpen)}><FaTimes color='gray'></FaTimes></button>
             </div>
             :
