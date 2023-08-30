@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './navbar';
 import axios from 'axios';
 import Link from 'next/link';
-
+import Image from 'next/image';
 function Articles() {
   const [value, setValue] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -44,7 +44,7 @@ function Articles() {
                 <div dangerouslySetInnerHTML={{ __html: item.content.substring(0, 100) + '...' }} />
                 <p>{item.name}</p>
                 </div>
-                <img src={item.image} alt="" />
+                <Image src={item.image} alt="" />
             </Link>
             ))}
           </div>
