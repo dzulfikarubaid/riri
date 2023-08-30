@@ -25,19 +25,21 @@ function Articles() {
           <div className='flex flex-row justify-between'>
             <h1 className='text-xl font-semibold'>Artikel Terbaru</h1>
             <div>
-              {/* sorting data */}
+              
             </div>
           </div>
-          <div className='bg-gray-100 p-4'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nobis atque quis minima ipsam dignissimos delectus vitae. Minus aliquam ex, amet voluptate optio corrupti repellendus recusandae asperiores ad nam corporis.
-          </div>
+          <div className='flex flex-col w-[600px] gap-10'>
           {value.map((item: any, index) => (
-            <Link href={`/articles/${item.id}`} className='bg-gray-100 p-4' key={item.id}>
+            <Link href={`/articles/${item.id}`} className='bg-gray-100 p-4 flex flex-row gap-10' key={item.id}>
+                <div>
                 <h1>{item.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: item.content.substring(0, 100) + '...' }} />
                 <p>{item.name}</p>
+                </div>
+                <img src={item.image} alt="" />
             </Link>
             ))}
+          </div>
 
         </div>
       </div>

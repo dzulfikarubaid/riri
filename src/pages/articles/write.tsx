@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { JWT } from 'next-auth/jwt';
 import { useSession } from 'next-auth/react';
 import { FaTimes, FaExclamationTriangle, FaExclamationCircle } from 'react-icons/fa';
-
+import classNames from "classnames"; 
 const RemoveImagePlugin = (editor:any) => {
     editor.ui.registry.addMenuItem('removeimage', {
       text: 'Remove Image',
@@ -38,11 +38,16 @@ export default function Write() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { data: session, status } = useSession();
-
+  const [selectedImage, setSelectedImage]:any = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  
   async function save(e:any){
     e.preventDefault()
     setLoading(true)
     console.log(value);
+    if (!selectedImage){
+      setSelectedImage('logo-aeli-putih.png')
+    }
     if (editorRef.current) {
       const content = editorRef.current.getContent();
     
@@ -52,7 +57,8 @@ export default function Write() {
         name: session?.user?.name,
         title: value,
         content: content,
-        create_at: new Date()
+        create_at: new Date(),
+        image:URL.createObjectURL(selectedImage)
       }
       console.log(data);
       // an application would save the editor content to the server here
@@ -86,7 +92,7 @@ export default function Write() {
   const handleEditorChange = (content:any, editor:any) => {
     console.log(content);
   };
-
+  
   const handleFilePicker = (callback:any) => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
@@ -102,6 +108,63 @@ export default function Write() {
 
   return (
     <div className='relative w-full h-screen'>
+      {
+      isOpen && (
+        <div className="flex h-full  fixed flex-col justify-center items-center w-full z-[99999999999] backdrop-blur-xl overflow-hidden">
+      <div className="bg-white rounded-xl flex flex-col gap-10 p-10 w-[450px] border-2 overflow-y-auto">
+        <div className='flex flex-row-reverse'>
+          <button onClick={() => setIsOpen(!isOpen)}><FaTimes size={20}></FaTimes></button>
+        </div>
+  
+        {selectedImage && (
+          <div>
+            <div className='p-4 bg-gray-50 flex flex-col justify-center items-center' >
+            <div className='flex flex-row-reverse w-full'>
+              <button onClick={() => setSelectedImage(null)}><FaTimes size={20}></FaTimes></button>
+            </div>
+            <img
+              alt="not found"
+              width={"250px"}
+              src={URL.createObjectURL(selectedImage)}
+            />
+            <h1>{URL.createObjectURL(selectedImage)}</h1>
+            </div>
+          
+          </div>
+        )}
+        <div className='flex flex-col gap-4'>
+          <label htmlFor="title">Judul Artikel</label>
+        <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder='Masukkan judul artikel anda' name='title' id='title' className=' focus:border-black rounded-lg  border focus:outline-none p-2' />
+        </div>
+        
+        <div className='flex flex-col gap-4'>
+          <h1>Masukkan Gambar Thumbnail</h1>
+        <input
+        className={classNames({
+          // button colors
+          "file:bg-violet-50 file:text-black hover:file:bg-violet-100": true,
+          // button shape and spacing
+          "file:rounded-lg file:rounded-tr-none file:rounded-br-none": true,
+          "file:px-4 file:py-2 file:mr-4 file:border-none": true,
+          // overall input styling
+          "hover:cursor-pointer border rounded-lg text-gray-400": true,
+        })}
+          type="file"
+          name="myImage"
+          onChange={(event:any) => {
+            console.log(event.target.files[0]);
+            setSelectedImage(event.target.files[0]);
+          }}
+        />
+        <label htmlFor="myImage" className='text-gray-400'>SVG, PNG, JPG (rekomendasi: ukuran 1x1).</label>
+        </div>
+        
+        <button className='bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-xl ' onClick={save}>{loading ? 'Loading...' : 'Publish'}</button>
+        
+      </div>
+      </div>
+      )
+    }
        <div className='absolute right-10 bottom-10 z-[999999999999]'> 
         {error && (
           <div className='flex flex-row gap-4 text-red-500  bg-red-100 border border-red-500 p-1 px-3 rounded-xl justify-center items-center'>
@@ -140,8 +203,10 @@ export default function Write() {
     
    
     <div className='absolute right-10 top-6 z-[99999999] flex flex-row gap-10 justify-center items-center'>
-    <input type="text" value={value} onChange={e => setValue(e.target.value)} placeholder='Masukkan judul' name='title' id='title' className=' text-lg focus:border-black  border-b-2 focus:outline-none p-2' />
-    <button className='bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-xl ' onClick={save}>{loading ? 'Loading...' : 'Publish'}</button>
+    <button className='bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-xl ' onClick={() => setIsOpen(!isOpen)}>{loading ? 'Loading...' : 'Save'}</button>
+    
+    
+    
     </div>
    
     {/* <button onClick={handlePublish} className='bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-xl absolute right-10 top-6 z-[99999999]'>Publish</button> */}

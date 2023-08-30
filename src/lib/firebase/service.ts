@@ -62,6 +62,7 @@ export async function addArticles(userData:{
     content:string;
     name:string;
     create_at:string;
+    image:string;
 }, callback:Function){
     const q = query(collection(firestore, "articles"))
     const snapshot = await getDocs(q);
@@ -85,6 +86,7 @@ export async function addArticles(userData:{
         })
         return
     }
+    
     await addDoc(collection(firestore, "articles"),userData)
     .then(res => {
         callback({

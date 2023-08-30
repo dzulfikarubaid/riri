@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Content from "../Content";
 import axios from "axios";
 import Navbar from "./navbar";
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, parseISO } from 'date-fns';
 
 interface DataItem {
   id: string,
@@ -36,7 +36,10 @@ function DetailArticles() {
   const formatTimeLeft = (createdAt: string) => {
     const now = new Date();
     const createdAtDate = new Date(createdAt);
-    const timeLeftMillis = createdAtDate.getTime() - now.getTime();
+    console.log(now)
+    console.log(createdAtDate)
+    const timeLeftMillis = now.getTime() - createdAtDate.getTime();
+    console.log(timeLeftMillis)
     const secondsLeft = Math.floor(timeLeftMillis / 1000);
     
     if (secondsLeft < 60) {
