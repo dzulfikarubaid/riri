@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Content from "../Content";
 import axios from "axios";
 import Navbar from "./navbar";
+import { formatDistanceToNow } from 'date-fns';
 
 interface DataItem {
   id: string,
@@ -27,13 +28,17 @@ function DetailArticles() {
         if (selected) {
           setSelectedArticle(selected);
         }
-
       })
       .catch((err) => {
         console.log(err);
       });
   }, [query.id]);
-
+  const formatTimeLeft = (createdAt: string) => {
+    const now = new Date();
+    const createdAtDate = new Date(createdAt);
+    const timeLeft = createdAtDate.getTime() - now.getTime();
+    return formatDistanceToNow(timeLeft, { addSuffix: true });
+  }
   return (
     <div >
       <Navbar></Navbar>
@@ -42,7 +47,7 @@ function DetailArticles() {
         <div className="w-[700px]">
           <h1 className="font-extrabold text-[40px]">{selectedArticle.title}</h1>
           <h1>{selectedArticle.name}</h1>
-          <h1>{selectedArticle.create_at}</h1>
+          <h1>{formatTimeLeft(selectedArticle.create_at)}</h1>
           <div dangerouslySetInnerHTML={{ __html: selectedArticle.content}} />
         </div>
       )}
