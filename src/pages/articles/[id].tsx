@@ -36,9 +36,21 @@ function DetailArticles() {
   const formatTimeLeft = (createdAt: string) => {
     const now = new Date();
     const createdAtDate = new Date(createdAt);
-    const timeLeft = createdAtDate.getTime() - now.getTime();
-    return formatDistanceToNow(timeLeft, { addSuffix: true });
-  }
+    const timeLeftMillis = createdAtDate.getTime() - now.getTime();
+    const secondsLeft = Math.floor(timeLeftMillis / 1000);
+    
+    if (secondsLeft < 60) {
+      return "Less than a minute left";
+    } else if (secondsLeft < 3600) {
+      const minutes = Math.floor(secondsLeft / 60);
+      return `${minutes} ${minutes > 1 ? "minutes" : "minute"} left`;
+    } else if (secondsLeft < 86400) {
+      const hours = Math.floor(secondsLeft / 3600);
+      return `${hours} ${hours > 1 ? "hours" : "hour"} left`;
+    } else {
+      return "More than a day left";
+    }
+  };
   return (
     <div >
       <Navbar></Navbar>
