@@ -163,7 +163,7 @@ function Navbar(props:any){
             {
               data ?
               <div className='flex flex-row gap-4 items-center'>
-                <Link className={`${white ? 'text-black' : 'text-white'}`} href={'/profile'}>{data.user.name}</Link>
+                <Link className={`${white ? 'text-black' : 'text-white'}`} href={`/profile/${data.user.name}`}>{data.user.name}</Link>
                 <button className={` py-2 px-3 ${!white ? 'text-black bg-white hover:bg-gray-100' : 'text-white bg-blue-500 hover:bg-blue-600'}`} onClick={handleSignout}>Sign Out</button>
               </div>
               :

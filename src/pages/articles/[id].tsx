@@ -4,6 +4,7 @@ import Content from "../Content";
 import axios from "axios";
 import Navbar from "./navbar";
 import { formatDistanceToNow, parseISO } from 'date-fns';
+import Link from "next/link";
 
 interface DataItem {
   id: string,
@@ -43,15 +44,15 @@ function DetailArticles() {
     const secondsLeft = Math.floor(timeLeftMillis / 1000);
     
     if (secondsLeft < 60) {
-      return "Less than a minute left";
+      return "kurang dari 1 menit yang lalu";
     } else if (secondsLeft < 3600) {
       const minutes = Math.floor(secondsLeft / 60);
-      return `${minutes} ${minutes > 1 ? "minutes" : "minute"} left`;
+      return `${minutes} ${minutes > 1 ? "menit" : "menit"} yang lalu`;
     } else if (secondsLeft < 86400) {
       const hours = Math.floor(secondsLeft / 3600);
-      return `${hours} ${hours > 1 ? "hours" : "hour"} left`;
+      return `${hours} ${hours > 1 ? "jam" : "jam"} yang lalu`;
     } else {
-      return "More than a day left";
+      return "lebih dari satu hari yang lalu";
     }
   };
   return (
@@ -59,10 +60,12 @@ function DetailArticles() {
       <Navbar></Navbar>
       <div className="flex flex-col justify-center items-center">
       {selectedArticle && (
-        <div className="w-[700px]">
+        <div className="w-[700px] flex flex-col gap-10">
           <h1 className="font-extrabold text-[40px]">{selectedArticle.title}</h1>
-          <h1>{selectedArticle.name}</h1>
-          <h1>{formatTimeLeft(selectedArticle.create_at)}</h1>
+          <div>
+          <Link className='hover:border-b hover:border-black' href={`/profile/${selectedArticle.name}`}>{selectedArticle.name}</Link>
+          <h1>Diposting {formatTimeLeft(selectedArticle.create_at)}</h1>
+          </div>
           <div dangerouslySetInnerHTML={{ __html: selectedArticle.content}} />
         </div>
       )}

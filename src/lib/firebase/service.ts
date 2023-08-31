@@ -1,4 +1,5 @@
 import { getDocs, collection, getDoc, getFirestore, doc, query, where, addDoc } from "firebase/firestore";
+import app2 from './init2'
 import app from './init'
 import bcrypt from 'bcrypt'
 import { getDatabase, ref, child, get } from "firebase/database";
@@ -7,7 +8,7 @@ import { useRef, useState, useEffect } from "react";
 const firestore = getFirestore(app)
 
 export async function getData(path: any) {
-    const database = getDatabase(app);
+    const database = getDatabase(app2);
     const rootRef = ref(database, path);
     
     try {

@@ -58,7 +58,7 @@ export default function Write() {
         title: value,
         content: content,
         create_at: new Date(),
-        image:URL.createObjectURL(selectedImage)
+        image:selectedImage
       }
       console.log(data);
       // an application would save the editor content to the server here
@@ -70,6 +70,7 @@ export default function Write() {
         body: JSON.stringify(data),
 
     })
+    
     if(result.status === 200){
         setLoading(false)
         // e.target.reset()
@@ -125,9 +126,8 @@ export default function Write() {
             <img
               alt="not found"
               width={"250px"}
-              src={URL.createObjectURL(selectedImage)}
+              src={selectedImage}
             />
-            <h1>{URL.createObjectURL(selectedImage)}</h1>
             </div>
           
           </div>
@@ -152,8 +152,13 @@ export default function Write() {
           type="file"
           name="myImage"
           onChange={(event:any) => {
-            console.log(event.target.files[0]);
-            setSelectedImage(event.target.files[0]);
+            const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e:any) => {
+      const base64Data = e.target.result; // Base64-encoded string
+      setSelectedImage(base64Data); // Simpan data Base64 ke dalam state
+    };
+    reader.readAsDataURL(file);
           }}
         />
         <label htmlFor="myImage" className='text-gray-400'>SVG, PNG, JPG (rekomendasi: ukuran 1x1).</label>

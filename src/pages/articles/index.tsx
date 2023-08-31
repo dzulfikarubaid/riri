@@ -25,6 +25,7 @@ function Articles() {
     );
     setFilteredData(filteredResults);
   }, [searchInput, value]);
+  
   return (
     <div>
       <Navbar value={searchInput} onChange={(e:any) => setSearchInput(e.target.value)}/>
@@ -38,14 +39,19 @@ function Articles() {
           </div>
           <div className='flex flex-col w-[600px] gap-10'>
           {value.map((item: any, index) => (
-            <Link href={`/articles/${item.id}`} className='bg-gray-100 p-4 flex flex-row gap-10' key={item.id}>
-                <div>
-                <h1>{item.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: item.content.substring(0, 100) + '...' }} />
-                <p>{item.name}</p>
+            <div  key={item.id}>
+              <Link href={`/articles/${item.id}`} className='bg-gray-100 p-4 flex flex-row justify-between'>
+              <div>
+                <h1 className='font-bold text-xl'>{item.title}</h1>
+                <div className='text-md font-medium text-black' dangerouslySetInnerHTML={{ __html: item.content.substring(0, 100) + '...' }} />
+                
                 </div>
-                <Image src={item.image} alt="" />
-            </Link>
+                <img className='w-[100px] h-[100px]' src={item.image ? item.image : '/logo-aeli-putih.png'} alt="" />
+              </Link>
+                
+
+                <Link className='hover:border-b hover:border-black' href={`/profile/${item.name}`}>{item.name}</Link>
+            </div>
             ))}
           </div>
 
