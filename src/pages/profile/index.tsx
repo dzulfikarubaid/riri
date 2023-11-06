@@ -71,7 +71,7 @@ function Profile() {
       }).then((res) => {
         history.back()
         alert("data berhasil diubah")
-        update()
+        update({ name: "John Doe" })
      
       })
       .catch((error) => {
