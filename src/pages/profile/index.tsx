@@ -56,27 +56,22 @@ function Profile() {
       image: String(imageBase64) || '',
     };
     
-    
-
     try {
-      await setDoc(doc(db, 'users', data?.user?.id), formData, {merge: true})
-      .then(() => {
-        console.log('Profile updated successfully');
-        history.back();
-      })
-      .catch((error) => {
-        console.error('Error updating profile:', error);
-      })
+      console.log('Updating profile with data:', formData);
+      await setDoc(doc(db, 'users', data?.user?.id), formData, { merge: true });
+      console.log('Profile updated successfully');
+      history.back();
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
+
+    
       // await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
       //   headers: {
       //     'Content-Type': 'multipart/form-data',
       //   },
       // });
 
-      
-    } catch (error) {
-      console.error('Error updating profile:', error);
-    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
