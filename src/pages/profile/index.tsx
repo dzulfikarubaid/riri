@@ -12,6 +12,7 @@ function Profile() {
   const [profileData, setProfileData] = useState({
     name: data?.user?.name || '',
     email: data?.user?.email || '',
+    image: data?.user?.image || '',
   });
 
   const [image, setImage] = useState<File | null>(null); // State untuk gambar yang akan diunggah
@@ -38,7 +39,9 @@ function Profile() {
           setProfileData({
             name: responseData.name || '',
             email: responseData.email || '',
+            image: responseData.image || '',
           });
+          setImageBase64(responseData.image || '');
         })
         .catch((error) => {
           console.error('Error fetching profile data:', error);
