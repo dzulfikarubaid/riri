@@ -12,7 +12,7 @@ export default async function handler(
 ) {
   if (req.method === 'PUT') {
     const { id }:any = req.query; // Extract the id from query parameters
-    const userData = req.body; // Extract user data from the request body
+    const userData:any = req.body; // Extract user data from the request body
 
     // Call updateData with the correct argument order
     updateData(

@@ -5,6 +5,10 @@ import { BiUserCircle } from 'react-icons/bi';
 import { FaPen } from 'react-icons/fa6';
 import { FiEdit } from 'react-icons/fi';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
+import { addDoc, collection, setDoc, doc, getFirestore } from 'firebase/firestore'
+import { firestore } from '@/lib/firebase/service'
+
+const db = getFirestore()
 function Profile() {
   const { data }: any = useSession();
   const [profileData, setProfileData] = useState({
@@ -46,24 +50,29 @@ function Profile() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    imageBase64 ? console.log(String(imageBase64)) : console.log('no image')
     // Buat objek FormData untuk mengirim data profil dan gambar
-    const formData = new FormData();
-    formData.append('name', profileData.name);
-    formData.append('email', profileData.email);
-    if (imageBase64) {
-      formData.append('image', 'tes');
-    }
+    const formData = {
+      name: profileData.name,
+      email: profileData.email,
+      image: String(imageBase64) || '',
+    };
+    
+    
 
     try {
-      await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      console.log('Profile updated successfully');
+      await setDoc(doc(db, 'users', data?.user?.id), formData, {merge: true})
+      .then(() => {
+        console.log('Profile updated successfully');
       history.back();
+      })
+      // await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //   },
+      // });
+
+      
     } catch (error) {
       console.error('Error updating profile:', error);
     }
