@@ -13,7 +13,7 @@ function Profile() {
   const router = useRouter();
 
 
-  const { data }: any = useSession();
+  const { data, update }: any = useSession();
   const [profileData, setProfileData] = useState({
     name: data?.user?.name || '',
     email: data?.user?.email || '',
@@ -71,6 +71,7 @@ function Profile() {
       }).then((res) => {
         history.back()
         alert("data berhasil diubah")
+        update()
      
       })
       .catch((error) => {
