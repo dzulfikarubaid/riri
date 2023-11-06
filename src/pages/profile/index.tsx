@@ -6,9 +6,7 @@ import { FaPen } from 'react-icons/fa6';
 import { FiEdit } from 'react-icons/fi';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { addDoc, collection, setDoc, doc, getFirestore } from 'firebase/firestore'
-import { firestore } from '@/lib/firebase/service'
-
-const db = getFirestore()
+import { db } from '@/lib/firebase/init';
 function Profile() {
   const { data }: any = useSession();
   const [profileData, setProfileData] = useState({
