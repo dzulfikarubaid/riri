@@ -63,7 +63,14 @@ function Profile() {
         headers: {
           'Content-Type': 'application/json'
         },
-      });
+      }).then((res) => {
+        history.back()
+        alert("data berhasil diubah")
+      })
+      .catch((error) => {
+        console.error('Error updating profile data:', error);
+        alert("data gagal diubah")
+      })
 
   };
 
