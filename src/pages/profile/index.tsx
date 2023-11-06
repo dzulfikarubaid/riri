@@ -56,20 +56,11 @@ function Profile() {
       email: profileData.email,
       image: String(imageBase64) || '',
     };
-    
-
-    console.log('Updating profile with data:', formData);
-    await setDoc(doc(db, 'users', data?.user?.id), formData, { merge: true });
-    console.log('Profile updated successfully');
-    history.back();
-  
-
-    
-      // await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
+      await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
   };
 
