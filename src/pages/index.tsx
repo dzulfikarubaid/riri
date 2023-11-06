@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 
 function Index() {
   const {data, update} = useSession()
-  update()
+  
   return (
     <div>
         <Navbar></Navbar>
