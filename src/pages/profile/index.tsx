@@ -46,8 +46,8 @@ function Profile() {
     }
   }, [data]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+
     imageBase64 ? console.log(String(imageBase64)) : console.log('no image')
     // Buat objek FormData untuk mengirim data profil dan gambar
     const formData = {
@@ -62,7 +62,10 @@ function Profile() {
       await setDoc(doc(db, 'users', data?.user?.id), formData, {merge: true})
       .then(() => {
         console.log('Profile updated successfully');
-      history.back();
+        history.back();
+      })
+      .catch((error) => {
+        console.error('Error updating profile:', error);
       })
       // await axios.put(`/api/updateprofile/${data?.user?.id}`, formData, {
       //   headers: {
