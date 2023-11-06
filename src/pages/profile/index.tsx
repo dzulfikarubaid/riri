@@ -51,6 +51,7 @@ function Profile() {
     imageBase64 ? console.log(String(imageBase64)) : console.log('no image')
     // Buat objek FormData untuk mengirim data profil dan gambar
     const formData = {
+      id: data?.user?.id,
       name: profileData.name,
       email: profileData.email,
       image: String(imageBase64) || '',
