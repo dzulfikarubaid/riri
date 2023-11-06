@@ -7,7 +7,12 @@ import { FiEdit } from 'react-icons/fi';
 import { MdOutlineAddPhotoAlternate } from 'react-icons/md';
 import { addDoc, collection, setDoc, doc, getFirestore } from 'firebase/firestore'
 import { db } from '@/lib/firebase/init';
+import { useRouter } from 'next/router';
+
 function Profile() {
+  const router = useRouter();
+
+
   const { data }: any = useSession();
   const [profileData, setProfileData] = useState({
     name: data?.user?.name || '',
@@ -66,6 +71,7 @@ function Profile() {
       }).then((res) => {
         history.back()
         alert("data berhasil diubah")
+        router.reload();
       })
       .catch((error) => {
         console.error('Error updating profile data:', error);

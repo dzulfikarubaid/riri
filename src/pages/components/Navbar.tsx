@@ -11,6 +11,7 @@ import {PiUserCircleLight} from 'react-icons/pi'
 function Navbar(props:any){
   const {className} = props
   const {data}:any = useSession()
+  
   const {push} = useRouter()
   function handleSignout(){
     signOut()
