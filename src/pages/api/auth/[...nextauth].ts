@@ -38,7 +38,11 @@ const authOptions: NextAuthOptions = {
         })
     ],
     callbacks:{
-        jwt({token, account, profile, user}){
+        jwt({token, account, profile, user, trigger}){
+            if (trigger === "update" && user?.name) {
+                // Note, that `session` can be any arbitrary object, remember to validate it!
+                token.name = user.name
+              }
             if(account?.provider === "credentials"){
                 token.email = user.email
                 token.name = user.name
