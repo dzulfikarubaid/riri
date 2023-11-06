@@ -94,7 +94,7 @@ function Profile() {
     <div className="flex justify-center p-10 w-full items-center flex-col">
       {/* <h1 className='my-10'>Change Profile</h1> */}
       {data && (
-        <form className="flex flex-col gap-4 w-[500px]" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-4 w-[500px]" >
           <div className=' w-full justify-center items-center flex'>
             <div
               className="bg-gray-100 p-2 focus:outline-none h-[100px] w-[100px] rounded-full flex justify-center bg-cover bg-center relative"
@@ -134,7 +134,7 @@ function Profile() {
             value={profileData.email}
             onChange={handleInputChange}
           />
-          <button type="submit" className='w-full bg-blue-900 text-white rounded-xl py-2'>Simpan</button>
+          <button onClick={handleSubmit} className='w-full bg-blue-900 text-white rounded-xl py-2'>Simpan</button>
         </form>
       )}
     </div>
