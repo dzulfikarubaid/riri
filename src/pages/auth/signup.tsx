@@ -28,10 +28,11 @@ function Signup() {
         if(result.status === 200){
             await addDoc(collection(firestore, 'users'), data).then(() => {
                 console.log('data added')
-            })
-            setLoading(false)
+                setLoading(false)
             // e.target.reset()
-            push('/auth/signin')
+                push('/auth/signin')
+            })
+            
         }
         else {
             setLoading(false);
