@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from 'react'
-import Content from "../Content";
+
 import axios from "axios";
 import Navbar from "./navbar";
 import { formatDistanceToNow, parseISO } from 'date-fns';

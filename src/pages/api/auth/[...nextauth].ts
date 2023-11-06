@@ -43,6 +43,9 @@ const authOptions: NextAuthOptions = {
                 token.email = user.email
                 token.name = user.name
             }
+            if (user) {
+                token.uid = user.id;
+              }
 
             return token
         },
@@ -53,12 +56,15 @@ const authOptions: NextAuthOptions = {
             if ("name" in token){
                 session.user.name = token.name
             }
+            if (session?.user) {
+                session.user.id = token.uid;
+            }
 
             return session
         }
     },
     pages:{
-        signIn: '/signin'
+        signIn: '/auth/signin'
     }
 };
 

@@ -1,25 +1,11 @@
-import { getDocs, collection, getDoc, getFirestore, doc, query, where, addDoc } from "firebase/firestore";
-import app2 from './init2'
+import { getDocs, collection, getDoc, getFirestore, doc, query, where, addDoc, updateDoc } from "firebase/firestore";
 import app from './init'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { getDatabase, ref, child, get } from "firebase/database";
 import { useRef, useState, useEffect } from "react";
 
-const firestore = getFirestore(app)
+export const firestore = getFirestore(app)
 
-export async function getData(path: any) {
-    const database = getDatabase(app2);
-    const rootRef = ref(database, path);
-    
-    try {
-      const snapshot = await get(rootRef);
-      const dbValue = snapshot.val();
-      return dbValue;
-    } catch (error) {
-      console.error('Error getting data:', error);
-      throw error;
-    }
-  }
 export async function retrieveData(collectionName:string){
     const snapshot = await getDocs(collection(firestore, collectionName));
     const data = snapshot.docs.map((doc) => (
@@ -104,6 +90,29 @@ export async function addArticles(userData:{
         }
     )
 }
+export async function updateData(userData:{
+    email:string;
+    name:string;
+    image:string;
+}, callback: Function, id:string) {
+    
+    const docRef = doc(firestore, "users", id);
+    await updateDoc(docRef, userData).then(res => {
+        callback({
+            status:true,
+            message:"Berhasil mengubah data"
+        })
+    })
+    .catch(
+        (error) => {
+            callback({
+                status:false,
+                message:error.message
+            })
+        }
+    )
+    
+  }
 export async function signUp(userData:{
     email:string;
     name:string;
@@ -129,13 +138,6 @@ export async function signUp(userData:{
         callback({
             status:false,
             message:"Password minimal 8 karakter"
-        })
-        return
-    }
-    if(userData.email.split('@')[1] !== "aeli.or.id"){
-        callback({
-            status:false,
-            message:"Email yang dimasukkan harus menggunakan domain aeli.or.id"
         })
         return
     }

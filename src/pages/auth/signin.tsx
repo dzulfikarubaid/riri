@@ -23,7 +23,7 @@ function Signin() {
                 callbackUrl})
             if(!res?.error){
                 setLoading(false)
-                push(callbackUrl)
+                push('/dashboard')
             }
             else{
                 setLoading(false)
@@ -46,8 +46,8 @@ function Signin() {
   return (
     <div className='bg-gray-100 flex flex-col h-full'>
         <Link href="/" className='bg-white text-black  w-full flex flex-row px-24 py-4 gap-3 items-center'>
-            <h1 className='font-semibold text-xl border-r-[1px] px-3 border-black'>AELI</h1>
-            <h1>Asosiasi Experiential Learning Indonesia</h1>
+            <h1 className='font-semibold text-xl border-r-[1px] px-3 border-black'>RIRI</h1>
+            <h1>Accounts</h1>
         </Link>
         <div className='h-screen flex justify-center items-center'>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-6 py-16 rounded-xl bg-white px-20'>
@@ -57,14 +57,14 @@ function Signin() {
             }
             <Input 
             label='Email'
-            type='email' name='email' placeholder='Masukkan email aeli anda'></Input>
+            type='email' name='email' placeholder='Masukkan email anda'></Input>
             <Input
             label='Password'
             type='password' name='password' placeholder='Masukkan Password'></Input>
             <button type='submit' className='bg-black rounded-xl p-2 px-3 hover:bg-blue-300 text-white w-full'>{
                 loading ? "Loading..." : "Sign In"
             }</button>
-            <p>Belum punya akun? <Link className='text-blue-500 hover:underline' href="/signup">Daftar di sini</Link></p>
+            <p>Belum punya akun? <Link className='text-blue-500 hover:underline' href="/auth/signup">Daftar di sini</Link></p>
         </form>
 
         </div>

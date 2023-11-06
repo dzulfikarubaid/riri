@@ -17,7 +17,7 @@ export default function withAuth(middleware: NextMiddleware, requireAuth: string
         } else if (requireAuth.includes(pathname)) {
             // If the user is not authenticated and trying to access a protected route,
             // redirect them to the /signin route with the callbackUrl
-            const url = new URL("/signin", req.url);
+            const url = new URL("/auth/signin", req.url);
             url.searchParams.set("callbackUrl", encodeURI(req.url));
             return NextResponse.redirect(url);
         }

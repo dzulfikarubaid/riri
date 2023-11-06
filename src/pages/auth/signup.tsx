@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
+import { addDoc, collection } from 'firebase/firestore'
+import { firestore } from '@/lib/firebase/service'
 function Signup() {
     const [loading, setLoading] = useState(false)
     const {push} = useRouter()
@@ -23,10 +24,14 @@ function Signup() {
             body: JSON.stringify(data),
 
         })
+        
         if(result.status === 200){
+            await addDoc(collection(firestore, 'users'), data).then(() => {
+                console.log('data added')
+            })
             setLoading(false)
             // e.target.reset()
-            push('/signin')
+            push('/auth/signin')
         }
         else {
             setLoading(false);
@@ -50,8 +55,8 @@ function Signup() {
   return (
     <div className='bg-gray-100 flex flex-col h-full'>
         <Link href={"/"} className='bg-white text-black  w-full flex flex-row px-24 py-4 gap-3 items-center'>
-            <h1 className='font-semibold text-xl border-r-[1px] px-3 border-black'>AELI</h1>
-            <h1>Asosiasi Experiential Learning Indonesia</h1>
+            <h1 className='font-semibold text-xl border-r-[1px] px-3 border-black'>RIRI</h1>
+            <h1>Accounts</h1>
         </Link>
         <div className='h-screen flex justify-center items-center my-12 '>
         <form onSubmit={handleSubmit}  className='flex flex-col justify-center items-center gap-6 py-16 rounded-xl bg-white px-20'>
@@ -68,7 +73,7 @@ function Signup() {
             ></Input>
             <Input type='email' name='email'
             label='Email'
-            placeholder='Masukkan email aeli anda'></Input>
+            placeholder='Masukkan email anda'></Input>
             <Input 
             label='Password'
             type='password' name='password' placeholder='Masukkan Password'></Input>
@@ -77,7 +82,7 @@ function Signup() {
             type='password' name='c_password' placeholder='Masukkan Konfirmasi Password'></Input>
             <button type='submit' className='bg-black rounded-xl p-2 px-3 hover:bg-blue-300 text-white w-full'>{loading ? "Loading..." : "Sign Up"}</button>
 
-            <p>Sudah punya akun? <Link href="/signin" className='text-blue-500 hover:underline' >Masuk</Link></p>
+            <p>Sudah punya akun? <Link href="/auth/signin" className='text-blue-500 hover:underline' >Masuk</Link></p>
         </form>
 
         </div>

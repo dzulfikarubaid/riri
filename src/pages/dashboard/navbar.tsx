@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import {FaPen, FaPenSquare, FaSearch, FaTimes} from 'react-icons/fa'
 import {FaPenToSquare} from 'react-icons/fa6'
+import { PiUserCircleLight } from 'react-icons/pi';
 function Navbar(props:any) {
     const [isOpen, setIsOpen] = useState(false);
     const{value, onChange} = props
@@ -22,11 +23,14 @@ function Navbar(props:any) {
             <button onClick={() => setIsOpen(!isOpen)}><FaTimes color='gray'></FaTimes></button>
             </div>
             :
-            <button onClick={() => setIsOpen(!isOpen)} className='flex flex-row gap-2 py-[5.5px] items-center '><FaSearch></FaSearch>Search</button>
+            <button onClick={() => setIsOpen(!isOpen)} className='flex flex-row gap-2 py-[5.5px] items-center '><FaSearch></FaSearch></button>
         }
         <Link href={'/articles/write'} className='flex flex-row items-center gap-2'>
-            <FaPenToSquare></FaPenToSquare>Write
+            <FaPenToSquare></FaPenToSquare>
             
+        </Link>
+        <Link href={'/profile'}>
+            <PiUserCircleLight size={25}/>
         </Link>
         </div>
     
