@@ -15,7 +15,7 @@ function Navbar(props: any) {
   const { className } = props;
   const { data, status } = useSession();
   const { push } = useRouter();
-  
+
   // Use the defined type for user data
   const [user, setUser] = useState<UserData | null>(null);
 
@@ -25,9 +25,14 @@ function Navbar(props: any) {
 
   useEffect(() => {
     // Set the user state when the session changes
+    console.log('Data from session:', data);
+
     if (status === 'authenticated') {
       // Use the optional chaining operator to safely access nested properties
-      setUser(data?.user || null);
+      setUser((prevUser) => ({
+        ...prevUser,
+        name: data?.user?.name || null,
+      }));
     } else {
       setUser(null);
     }

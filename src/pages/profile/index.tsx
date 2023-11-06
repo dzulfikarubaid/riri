@@ -71,7 +71,7 @@ function Profile() {
       }).then((res) => {
         history.back()
         alert("data berhasil diubah")
-        router.reload();
+     
       })
       .catch((error) => {
         console.error('Error updating profile data:', error);
