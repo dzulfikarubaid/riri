@@ -9,6 +9,9 @@ export default function withAuth(middleware: NextMiddleware, requireAuth: string
         const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
         
         if (token) {
+            if (pathname === '/dashboard') {
+                return NextResponse.redirect('http://localhost:3000/dashboard/pengukuran/')   
+              } 
             // If the user is authenticated and trying to access the /signin route,
             // redirect them to a different route (e.g., dashboard)
             if (pathname === "/signin" || pathname === "/signup") {

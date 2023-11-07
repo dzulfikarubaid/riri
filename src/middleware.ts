@@ -7,4 +7,4 @@ export function mainMiddleware(req:NextRequest){
     return res
 }
 
-export default withAuth(mainMiddleware, ["/dashboard", "/profile"])
+export default withAuth(mainMiddleware, ["/dashboard", "/profile", "/dashboard/pengukuran", "/dashboard/riwayat", "/dashboard/setting"])

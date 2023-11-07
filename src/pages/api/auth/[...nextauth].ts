@@ -9,7 +9,7 @@ const authOptions: NextAuthOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
-        CredentialsProvider({ 
+        CredentialsProvider({
             name: "Credentials",
             credentials: {
                 email: { label: "Email", type: "email" },
@@ -17,47 +17,52 @@ const authOptions: NextAuthOptions = {
 
             },
             async authorize(credentials) {
-                const { email, password} = credentials as {
+                console.log(credentials)
+                const { email, password } = credentials as {
                     email: string,
                     password: string,
-                    
+
                 };
-                const user:any = await signIn({email})
-                if(user){
+                const user: any = await signIn({ email })
+                if (user) {
                     const passwordConfirm = await compare(password, user.password)
-                    if(passwordConfirm){
+                    if (passwordConfirm) {
                         return user
                     }
-                    else{
+                    else {
                         return null
-                    }      }
-                else{
+                    }
+                }
+                else {
                     return null
                 }
             }
         })
     ],
-    callbacks:{
-        jwt({token, account, profile, user, trigger}){
-            if (trigger === "update" && user?.name) {
+    callbacks: {
+        jwt({ token, account, user, trigger, session }) {
+            if (trigger === "update") {
                 // Note, that `session` can be any arbitrary object, remember to validate it!
-                token.name = user.name
-              }
-            if(account?.provider === "credentials"){
+                return {
+                    ...token,
+                    ...session.user
+                }
+            }
+            if (account?.provider === "Credentials") {
                 token.email = user.email
                 token.name = user.name
             }
             if (user) {
                 token.uid = user.id;
-              }
+            }
 
             return token
         },
-        async session({ session, token }:any){
-            if ("email" in token){
+        async session({ session, token }: any) {
+            if ("email" in token) {
                 session.user.email = token.email
             }
-            if ("name" in token){
+            if ("name" in token) {
                 session.user.name = token.name
             }
             if (session?.user) {
@@ -67,7 +72,7 @@ const authOptions: NextAuthOptions = {
             return session
         }
     },
-    pages:{
+    pages: {
         signIn: '/auth/signin'
     }
 };

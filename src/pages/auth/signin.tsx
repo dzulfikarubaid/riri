@@ -7,30 +7,34 @@ function Signin() {
     const [loading, setLoading] = useState(false)
     const {push, query} = useRouter()
     const [error, setError] = useState("")
+    const [email, setEmail]  = useState("")
+    const [password, setPassword]  = useState("")
     const callbackUrl:any = query.callbackUrl || "/"
     async function handleSubmit(e:any){
         e.preventDefault()
         setLoading(true)
         const data = {
-            email: e.target.email.value,
-            password: e.target.password.value,
+            
         }
         try{
             const res = await signIn("credentials", {
                 redirect: false,
-                email: data.email,
-                password: data.password,
-                callbackUrl})
+                email: email,
+                password: password,
+                callbackUrl: callbackUrl
+            })
             if(!res?.error){
                 setLoading(false)
                 push('/dashboard')
             }
             else{
+                console.log(res)
                 setLoading(false)
                 setError("Email atau password salah")
             }
         }
         catch(err:any){
+            console.log(err)
             setError("Email atau password salah")
         }
     }
@@ -50,18 +54,22 @@ function Signin() {
             <h1>Accounts</h1>
         </Link>
         <div className='h-screen flex justify-center items-center'>
-        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-6 py-16 rounded-xl bg-white px-20'>
+        <form  className='flex flex-col justify-center items-center gap-6 py-16 rounded-xl bg-white px-20'>
             <h1 className='font-bold text-xl'>Masuk dengan email</h1>
             {
                 error && <p className='text-red-500 text-center max-w-[300px]'>{error}</p>
             }
-            <Input 
-            label='Email'
-            type='email' name='email' placeholder='Masukkan email anda'></Input>
-            <Input
-            label='Password'
-            type='password' name='password' placeholder='Masukkan Password'></Input>
-            <button type='submit' className='bg-black rounded-xl p-2 px-3 hover:bg-blue-300 text-white w-full'>{
+            <div className='flex flex-col gap-2'>
+            <label htmlFor="email">Email</label>
+            <input
+            className='border-solid border-b-[1px] border-black focus:outline-none focus:border-blue-500'
+            type='email' name='email' placeholder='Masukkan email anda' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+            <label htmlFor="password">Password</label>
+            <input
+            className='border-solid border-b-[1px] border-black focus:outline-none focus:border-blue-500'
+            type='password' name='password' placeholder='Masukkan Password' value={password} onChange={(e)=>setPassword(e.target.value)}></input>
+            </div>
+            <button onClick={handleSubmit} className='bg-black rounded-xl p-2 px-3 hover:bg-blue-300 text-white w-full'>{
                 loading ? "Loading..." : "Sign In"
             }</button>
             <p>Belum punya akun? <Link className='text-blue-500 hover:underline' href="/auth/signup">Daftar di sini</Link></p>

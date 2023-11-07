@@ -30,16 +30,24 @@ export async function signIn(userData:{
 }){
     const q = query(collection(firestore, "users"), where("email", "==", userData.email))
     const snapshot = await getDocs(q);
-    const data = snapshot.docs.map((doc) => (
-        {
-            id: doc.id,
-            ...doc.data()
-        }
-    ))
+    
+    const data = snapshot.docs.map((doc) => {
+        const userData = doc.data();
+        const { image, ...restOfData } = userData; 
+        return(
+            {
+                id: doc.id,
+                ...restOfData,
+            }
+        )
+
+    })
+    console.log('data firebase',data)
     if(data){
         return data[0]
     }
     else{
+        console.log('data firebase',data)
         return null
     }
 }

@@ -8,7 +8,7 @@ function Index() {
   return (
     <div>
         <Navbar></Navbar>
-        <h1>Signed as {data?.user?.name || ''}</h1>
+
         <div className='flex flex-col px-24 pt-10 justify-center'>
         <div className='flex flex-row gap-10 justify-center'>
         <h1 className='text-[50px] font-extrabold '>Indonesia&apos;s leading baby anthropometry service using image processing and artificial intelligence.</h1>
