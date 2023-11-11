@@ -5,21 +5,21 @@ const WebcamCapture = () => {
   const [devices, setDevices] = useState([]);
   const [imgSrc, setImgSrc] = useState(Array(devices.length).fill(null));
 
-  const handleDevices = useCallback((mediaDevices) => {
-    setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput"));
+  const handleDevices = useCallback((mediaDevices:any) => {
+    setDevices(mediaDevices.filter(({ kind }:any) => kind === "videoinput"));
   }, []);
 
-  const webcamRefs = useRef(devices.map(() => React.createRef()));
+  const webcamRefs:any = useRef(devices.map(() => React.createRef()));
 
   const capture = useCallback(() => {
-    const newImgSrc = webcamRefs.current.map((ref, key) => {
+    const newImgSrc = webcamRefs.current.map((ref:any, key:any) => {
       return ref.current.getScreenshot();
     });
     console.log(newImgSrc)
     setImgSrc(newImgSrc);
 
     // Menyimpan gambar ke sisi klien (Anda dapat mengirimnya ke server jika diperlukan)
-    newImgSrc.forEach((imgData, key) => {
+    newImgSrc.forEach((imgData:any, key:any) => {
       if (imgData) {
         const blob = dataURItoBlob(imgData);
         saveBlobAsFile(blob, `captured_image_${key + 1}.png`);
@@ -28,7 +28,7 @@ const WebcamCapture = () => {
   }, [webcamRefs]);
 
   // Fungsi untuk mengubah data URI menjadi objek blob
-  function dataURItoBlob(dataURI) {
+  function dataURItoBlob(dataURI:any) {
     const byteString = atob(dataURI.split(",")[1]);
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
@@ -40,7 +40,7 @@ const WebcamCapture = () => {
 
   // Fungsi untuk menyimpan blob sebagai file
  // Fungsi untuk menyimpan blob sebagai file
-function saveBlobAsFile(blob, fileName) {
+function saveBlobAsFile(blob:any, fileName:any) {
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = fileName;
@@ -72,7 +72,7 @@ function saveBlobAsFile(blob, fileName) {
 
   return (
     <>
-      {devices.map((device, key) => (
+      {devices.map((device:any, key:any) => (
         <div key={key}>
           {imgSrc[key] ? (
             <img src={imgSrc[key]} alt={`webcam-${key}`} />
@@ -80,7 +80,7 @@ function saveBlobAsFile(blob, fileName) {
             <Webcam
               height={600}
               width={600}
-              ref={webcamRefs.current[key]}
+              ref={webcamRefs?.current[key]}
               videoConstraints={{ deviceId: device.deviceId }}
             />
           )}
